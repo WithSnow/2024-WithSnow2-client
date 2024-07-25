@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import styles from '../common/styles';
+import styles from '../../styles/map/MapStyles';
 
 export default function MapComponent() {
   return (

@@ -6,46 +6,6 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
   },
 
-  map: {
-    flex: 1,
-  },
-  mapPlaceholder: {
-    width: 1722.417,
-    height: 954,
-    flexShrink: 0,
-    backgroundColor: 'gray',
-  },
-
-  searchBarContainer: {
-    position: 'absolute',
-    top: 10,
-    left: '50%',
-    transform: [{translateX: -165}],
-    width: 330,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  searchBar: {
-    flex: 1,
-    height: '100%',
-    borderRadius: 24,
-    backgroundColor: 'white',
-    paddingHorizontal: 16,
-  },
-  microphoneIcon: {
-    width: 12,
-    height: 12,
-  },
-
   categoryContainer: {
     position: 'absolute',
     top: 70,
@@ -75,7 +35,10 @@ export default StyleSheet.create({
     marginRight: 8,
   },
   categoryText: {
+    color: '#696969',
     fontSize: 13,
-    color: '#333',
+    fontFamily: 'Pretendard',
+    fontWeight: '400',
+    wordWrap: 'break-word',
   },
 });
