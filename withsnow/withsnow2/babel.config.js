@@ -1,19 +1,10 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
-    // Ensure all plugins have the same 'loose' mode setting
-    [
-      '@babel/plugin-transform-class-properties',
-      {loose: true}, // or false, just ensure consistency
-    ],
-    [
-      '@babel/plugin-transform-private-methods',
-      {loose: true}, // or false, just ensure consistency
-    ],
-    [
-      '@babel/plugin-transform-private-property-in-object',
-      {loose: true}, // or false, just ensure consistency
-    ],
+    ['react-native-reanimated/plugin'],
+    ['@babel/plugin-transform-class-properties', {loose: true}],
+    ['@babel/plugin-transform-private-methods', {loose: true}],
+    ['@babel/plugin-transform-private-property-in-object', {loose: true}],
     [
       'module-resolver',
       {
