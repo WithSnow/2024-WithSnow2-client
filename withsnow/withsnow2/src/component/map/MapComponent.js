@@ -4,7 +4,7 @@ import styles from '../../styles/map/MapStyles';
 
 export default function MapComponent({onPlaceSelect}) {
   const mockPlace = {
-    imageUri: '이미지_주소',
+    img: require('../../../assets/images/placeDetailImg.png'),
     name: '식민지역사박물관',
     address: '서울특별시 용산구 청파로47다길 27',
     phone: '02-2139-0427',

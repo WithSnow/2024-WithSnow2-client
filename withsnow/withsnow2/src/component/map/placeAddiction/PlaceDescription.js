@@ -9,12 +9,13 @@ export default function PlaceDescription({place}) {
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
+    // 여기에 즐겨찾기 목록에 추가/제거하는 로직을 추가할 수 있습니다.
   };
 
   return (
     <View style={styles.detailsContainer}>
       <Image
-        source={require('../../../../assets/images/placeDetailImg.png')}
+        source={place.img}
         style={styles.image}
         onError={error => console.log(error.nativeEvent.error)}
       />
