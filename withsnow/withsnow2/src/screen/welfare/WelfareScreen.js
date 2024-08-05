@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import styles from '../../styles/map/MapStyles';
 import UnderBar from '../../component/common/underBar/UnderBar';
-import MyPageComponent from '../../component/mypage/MyPageComponent';
+import WelfareComponent from '../../component/welfare/WelfareComponent';
 
 
-export default function MyPageScreen({ navigation, route }) {
-    const { activeTab: initialActiveTab = '마이페이지' } = route.params || {};
+export default function WelfareScreen({ navigation, route }) {
+    const { activeTab: initialActiveTab = '복지사 호출' } = route.params || {};
     const [activeTab, setActiveTab] = useState(initialActiveTab);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export default function MyPageScreen({ navigation, route }) {
 
     return (
         <View style={styles.container}>
-            <MyPageComponent />
+            <WelfareComponent />
 
 
             <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />
