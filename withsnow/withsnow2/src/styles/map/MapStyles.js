@@ -17,4 +17,16 @@ export default StyleSheet.create({
     left: 0,
     right: 0,
   },
+  buttonText: {
+    fontSize: 18,
+    color: 'blue',
+  },
+  buttonOverlay: {
+    position: 'absolute',
+    top: '50%', // Adjust this value to position the button as needed
+    left: 10, // Adjust this value to position the button as needed
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+    padding: 10,
+    borderRadius: 5,
+  },
 });

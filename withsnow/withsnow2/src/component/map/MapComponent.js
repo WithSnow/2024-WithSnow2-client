@@ -1,9 +1,10 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import styles from '../../styles/map/MapStyles';
 
-export default function MapComponent({onPlaceSelect}) {
+export default function MapComponent({onPlaceSelect, openFavoriteList}) {
   const mockPlace = {
+    id: 3,
     img: require('../../../assets/images/placeDetailImg.png'),
     name: '식민지역사박물관',
     address: '서울특별시 용산구 청파로47다길 27',
@@ -19,9 +20,18 @@ export default function MapComponent({onPlaceSelect}) {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.mapPlaceholder} />
-      <Text onPress={() => onPlaceSelect(mockPlace)}>placeDetail</Text>
+      <TouchableOpacity
+        onPress={() => onPlaceSelect(mockPlace)}
+        style={styles.buttonOverlay}>
+        <Text style={styles.buttonText}>placeDetail</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={openFavoriteList}
+        style={[styles.buttonOverlay, {top: 200}]}>
+        <Text style={styles.buttonText}>FavoriteList</Text>
+      </TouchableOpacity>
     </View>
   );
 }
