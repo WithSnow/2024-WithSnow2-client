@@ -1,5 +1,6 @@
-import React from 'react';
-import {View} from 'react-native';
+
+import React, { useState } from 'react';
+import { SafeAreaView, View } from 'react-native';
 import MapComponent from '../../component/map/MapComponent';
 import SearchBar from '../../component/common/searchBar/SearchBar';
 import TabBar from '../../component/common/category/Category';
