@@ -1,0 +1,61 @@
+// 파일 위치 변경 가능성 O
+const places = [
+  {
+    id: 1,
+    name: 'Place 1',
+    address: 'Address 1',
+    rating: 4.5,
+    phone: '123-456-7890',
+    openTime: '9:00 AM - 10:00 PM',
+    img: require('../../../assets/images/placeDetailImg.png'),
+    isFavorite: true,
+  },
+  {
+    id: 2,
+    name: 'Place 2',
+    address: 'Address 2',
+    rating: 4.0,
+    phone: '987-654-3210',
+    openTime: '10:00 AM - 8:00 PM',
+    img: require('../../../assets/images/placeDetailImg.png'),
+    isFavorite: true,
+  },
+  {
+    id: 3,
+    name: '식민지역사박물관',
+    address: '서울특별시 용산구 청파로47다길 27',
+    phone: '02-2139-0427',
+    rating: 4.6,
+    openTime: '18:00 영업 종료',
+    img: require('../../../assets/images/placeDetailImg.png'),
+    isFavorite: true,
+    features: [
+      '엘리베이터 있음',
+      '높은 턱 없음',
+      '휠체어 이용 가능 통로 있음',
+      '경사로 있음',
+    ],
+  },
+  {
+    id: 4,
+    name: 'Place 2',
+    address: 'Address 2',
+    rating: 4.0,
+    phone: '987-654-3210',
+    openTime: '10:00 AM - 8:00 PM',
+    img: require('../../../assets/images/placeDetailImg.png'),
+    isFavorite: true,
+  },
+  {
+    id: 5,
+    name: 'Place 2',
+    address: 'Address 2',
+    rating: 4.0,
+    phone: '987-654-3210',
+    openTime: '10:00 AM - 8:00 PM',
+    img: require('../../../assets/images/placeDetailImg.png'),
+    isFavorite: true,
+  },
+];
+
+export default places;

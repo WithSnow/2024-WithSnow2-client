@@ -22,4 +22,12 @@ export default StyleSheet.create({
   actionContainer: {
     flexDirection: 'row',
   },
+  handle: {
+    width: 40,
+    height: 5,
+    backgroundColor: '#ccc',
+    borderRadius: 3,
+    alignSelf: 'center',
+    marginTop: 5,
+  },
 });

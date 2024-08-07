@@ -47,6 +47,7 @@ const PlaceDetail = ({place, setSelectedPlace, toggleFavorite}) => {
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
       <Animated.View style={[styles.container, animatedStyle]}>
+        <View style={styles.handle} />
         <PlaceDescription place={place} toggleFavorite={toggleFavorite} />
         <View style={styles.actionContainer}>
           <ActionButton

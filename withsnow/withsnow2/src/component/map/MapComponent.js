@@ -2,7 +2,11 @@ import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import styles from '../../styles/map/MapStyles';
 
-export default function MapComponent({onPlaceSelect, openFavoriteList}) {
+export default function MapComponent({
+  navigation,
+  onPlaceSelect,
+  openFavoriteList,
+}) {
   const mockPlace = {
     id: 3,
     img: require('../../../assets/images/placeDetailImg.png'),
@@ -19,6 +23,10 @@ export default function MapComponent({onPlaceSelect, openFavoriteList}) {
     ],
   };
 
+  const openRecommendPlace = () => {
+    navigation.navigate('RecommendPlace');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.mapPlaceholder} />
@@ -31,6 +39,11 @@ export default function MapComponent({onPlaceSelect, openFavoriteList}) {
         onPress={openFavoriteList}
         style={[styles.buttonOverlay, {top: 200}]}>
         <Text style={styles.buttonText}>FavoriteList</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={openRecommendPlace} // 함수 연결
+        style={[styles.buttonOverlay, {top: 280}]}>
+        <Text style={styles.buttonText}>RecommendPlace</Text>
       </TouchableOpacity>
     </View>
   );
