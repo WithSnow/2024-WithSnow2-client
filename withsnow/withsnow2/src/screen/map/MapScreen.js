@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView, View} from 'react-native';
+
 import MapComponent from '../../component/map/MapComponent';
 import SearchBar from '../../component/common/searchBar/SearchBar';
 import Category from '../../component/common/category/Category';
@@ -8,7 +9,9 @@ import UnderBar from '../../component/common/underBar/UnderBar';
 import PlaceDetail from '../../component/map/placeDetail/PlaceDetail';
 import FavoriteList from '../../component/map/FavoriteList/FavoriteList';
 
-export default function MapScreen() {
+export default function MapScreen({navigation, route}) {
+  const {activeTab: initialActiveTab = '탐색'} = route.params || {};
+  const [activeTab, setActiveTab] = useState(initialActiveTab);
   const [selectedPlaceId, setSelectedPlaceId] = useState(null);
   const [isFavoriteListVisible, setFavoriteListVisible] = useState(false);
   const [places, setPlaces] = useState([
@@ -72,7 +75,9 @@ export default function MapScreen() {
 
   const handlePlaceSelect = place => {
     const selected = places.find(p => p.name === place.name);
-    setSelectedPlaceId(selected.id);
+    if (selected) {
+      setSelectedPlaceId(selected.id);
+    }
   };
 
   const toggleFavorite = id => {
@@ -87,13 +92,20 @@ export default function MapScreen() {
 
   const selectedPlace = places.find(place => place.id === selectedPlaceId);
 
+  useEffect(() => {
+    if (route.params?.activeTab) {
+      setActiveTab(route.params.activeTab);
+    }
+  }, [route.params?.activeTab]);
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <MapComponent
         onPlaceSelect={handlePlaceSelect}
         openFavoriteList={() => setFavoriteListVisible(true)}
       />
       <SearchBar />
+      <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />
       <Category />
       {selectedPlace && (
         <PlaceDetail
@@ -109,9 +121,6 @@ export default function MapScreen() {
           closeFavoriteList={() => setFavoriteListVisible(false)}
         />
       )}
-      <SafeAreaView style={styles.underBarContainer}>
-        <UnderBar />
-      </SafeAreaView>
-    </View>
+    </SafeAreaView>
   );
 }
