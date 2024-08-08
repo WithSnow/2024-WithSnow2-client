@@ -27,10 +27,15 @@ export default function RecommendPlaceScreen({route}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <RecommendPage_Header username={'베리어프롬'} />
       <ScrollView>
+        <RecommendPage_Header username={'베리어프롬'} />
         {filteredPlaces.map((place, index) => (
-          <RecommendPlace key={index} place={place} onClose={handleClose} />
+          <RecommendPlace
+            key={index}
+            place={place}
+            onClose={handleClose}
+            username={'베리어프롬'}
+          />
         ))}
       </ScrollView>
       <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />

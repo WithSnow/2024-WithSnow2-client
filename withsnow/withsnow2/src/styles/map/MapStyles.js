@@ -3,11 +3,11 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    position: 'relative',
   },
   mapPlaceholder: {
+    position: 'absolute',
     width: '100%',
-    height: '90%',
+    height: '100%',
     flexShrink: 0,
     backgroundColor: 'lightgray',
   },
@@ -17,6 +17,14 @@ export default StyleSheet.create({
     left: 0,
     right: 0,
   },
+  searchBarContainer: {
+    position: 'absolute',
+    top: 10,
+    width: '100%',
+    zIndex: 10,
+    alignItems: 'center',
+  },
+
   buttonText: {
     fontSize: 18,
     color: 'blue',

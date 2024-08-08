@@ -53,9 +53,14 @@ export default function MapScreen({navigation, route}) {
         openFavoriteList={() => setFavoriteListVisible(true)}
         openRecommendPlace={() => setRecommendPlaceVisible(true)} // RecommendPlace 함수 전달
       />
-      <SearchBar />
-      <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />
+
+      <View style={styles.searchBarContainer}>
+        <SearchBar />
+      </View>
+
       <Category />
+
+      <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />
       {selectedPlace && (
         <PlaceDetail
           place={selectedPlace}

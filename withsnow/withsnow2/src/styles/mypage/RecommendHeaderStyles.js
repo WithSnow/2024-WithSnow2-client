@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     height: '10%',
     padding: 10,
     backgroundColor: '#F7F5F5',
-    // marginBottom: 15,
   },
   header: {
     padding: 15,
@@ -18,14 +17,13 @@ const styles = StyleSheet.create({
   title: {
     color: 'black',
     fontSize: 18,
-    fontFamily: 'Pretendard',
     fontWeight: '400',
     letterSpacing: 1,
   },
   subtitle: {
     color: 'black',
     fontSize: 18,
-    fontFamily: 'Pretendard',
+
     fontWeight: '400',
     letterSpacing: 1,
   },

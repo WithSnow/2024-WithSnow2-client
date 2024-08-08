@@ -1,26 +1,26 @@
 import React from 'react';
-import { View } from 'react-native';
+import {View, Animated} from 'react-native';
 import UnderBarTab from './UnderBarTab';
 import styles from '../../../styles/common/UnderBarStyles';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
-export default function UnderBar({ activeTab, setActiveTab }) {
+export default function UnderBar({activeTab, setActiveTab}) {
   const navigation = useNavigation();
 
-  const handleTabPress = (tabName) => {
+  const handleTabPress = tabName => {
     setActiveTab(tabName);
     if (tabName === '탐색') {
-      navigation.navigate('Map', { activeTab: tabName });
+      navigation.navigate('Map', {activeTab: tabName});
     } else if (tabName === '마이페이지') {
-      navigation.navigate('MyPage', { activeTab: tabName });
+      navigation.navigate('MyPage', {activeTab: tabName});
     } else if (tabName === '복지사 호출') {
-      navigation.navigate('Welfare', { activeTab: tabName });
+      navigation.navigate('Welfare', {activeTab: tabName});
     }
     // 즐찾 추가해야함
   };
 
   return (
-    <View style={styles.underBarContainer}>
+    <Animated.View style={styles.underBarContainer}>
       <UnderBarTab
         img={require('../../../../assets/images/underBar_map.png')}
         activeImg={require('../../../../assets/images/underBar_activemap.png')}
@@ -42,6 +42,6 @@ export default function UnderBar({ activeTab, setActiveTab }) {
         active={activeTab === '마이페이지'}
         onPress={() => handleTabPress('마이페이지')}
       />
-    </View>
+    </Animated.View>
   );
 }

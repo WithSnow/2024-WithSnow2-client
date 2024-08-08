@@ -12,11 +12,15 @@ export default StyleSheet.create({
     height: 60,
     backgroundColor: '#fff',
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.12,
-    shadowRadius: 48,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
     elevation: 5,
     borderTopWidth: 1,
     borderTopColor: '#ddd',
+    zIndex: 10,
   },
 });
