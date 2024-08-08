@@ -2,11 +2,8 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#F7F5F5',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'row',
+    margin: 10,
   },
   placeCard: {
     backgroundColor: 'white',
@@ -24,12 +21,39 @@ const styles = StyleSheet.create({
     elevation: 3,
     flexShrink: 1,
   },
+  imageContainer: {
+    width: 120,
+    height: 120,
+    borderRadius: 15,
+    marginRight: 15,
+    overflow: 'hidden',
+    position: 'relative',
+  },
   image: {
-    width: 110,
-    height: 110,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  floorContainer: {
+    position: 'absolute',
+    top: 15,
+    right: 15,
+    flexDirection: 'column',
+  },
+  floorBox: {
+    backgroundColor: 'white',
+    padding: 5,
+    borderRadius: 9999,
+    marginVertical: 2,
+    borderWidth: 1,
+    borderColor: '#19BAFF',
+  },
+  floorText: {
+    fontSize: 10,
+    fontWeight: '400',
+    color: '#19BAFF',
   },
   placeAddiction: {
-    margin: 10,
     flex: 1,
   },
   name: {
@@ -43,15 +67,19 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '400',
     letterSpacing: 1,
-    marginLeft: 10,
-    flexWrap: 'wrap',
-    flexShrink: 1,
-    flex: 1,
+    marginTop: 10,
+  },
+  category: {
+    color: '#ADB0B0',
   },
   featuresContainer: {
     flexDirection: 'row',
-    marginTop: 10,
     transform: [{scale: 0.8}],
+    marginLeft: -25,
+    marginBottom: -10,
+  },
+  featureplus: {
+    marginRight: 5,
   },
 });
 

@@ -8,19 +8,16 @@ export default function MapComponent({
   openFavoriteList,
 }) {
   const mockPlace = {
-    id: 3,
-    img: require('../../../assets/images/placeDetailImg.png'),
-    name: '식민지역사박물관',
-    address: '서울특별시 용산구 청파로47다길 27',
-    phone: '02-2139-0427',
-    rating: 4.6,
-    openTime: '18:00 영업 종료',
-    features: [
-      '엘리베이터 있음',
-      '높은 턱 없음',
-      '휠체어 이용 가능 통로 있음',
-      '경사로 있음',
-    ],
+    id: 4,
+    name: '경복궁',
+    address: '서울 종로구 세종로',
+    rating: 4.0,
+    phone: '987-654-3210',
+    openTime: '10:00 AM - 8:00 PM',
+    img: require('../../../assets/images/geongbok.png'),
+    isFavorite: false,
+    features: ['높은 턱 없음', '계단 없음', '휠체어 이용 가능', '경사로 있음'],
+    floor: '1F',
   };
 
   const openRecommendPlace = () => {

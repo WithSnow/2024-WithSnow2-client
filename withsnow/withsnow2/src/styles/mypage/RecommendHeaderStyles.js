@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     height: '10%',
     padding: 10,
     backgroundColor: '#F7F5F5',
-    marginBottom: 15,
+    // marginBottom: 15,
   },
   header: {
     padding: 15,

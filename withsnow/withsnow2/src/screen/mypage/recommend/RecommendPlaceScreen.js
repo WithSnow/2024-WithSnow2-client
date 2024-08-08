@@ -8,8 +8,7 @@ import UnderBar from '../../../component/common/underBar/UnderBar';
 import styles from '../../../styles/map/MapStyles';
 
 export default function RecommendPlaceScreen({route}) {
-  const {activeTab: initialActiveTab = '개인별 맞춤 장소 추천'} =
-    route.params || {};
+  const {activeTab: initialActiveTab = '마이페이지'} = route.params || {};
   const [activeTab, setActiveTab] = useState(initialActiveTab);
 
   useEffect(() => {
@@ -24,11 +23,13 @@ export default function RecommendPlaceScreen({route}) {
     navigation.navigate('Map');
   };
 
+  const filteredPlaces = places.filter(place => place.id >= 1 && place.id <= 4);
+
   return (
     <SafeAreaView style={styles.container}>
       <RecommendPage_Header username={'베리어프롬'} />
       <ScrollView>
-        {places.map((place, index) => (
+        {filteredPlaces.map((place, index) => (
           <RecommendPlace key={index} place={place} onClose={handleClose} />
         ))}
       </ScrollView>
