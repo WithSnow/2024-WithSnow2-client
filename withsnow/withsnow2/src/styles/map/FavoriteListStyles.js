@@ -3,35 +3,36 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-  },
-  headerText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  closeButtonText: {
-    fontSize: 16,
-    color: 'blue',
+    margin: 10,
   },
   flatListContent: {
-    paddingBottom: 20,
+    paddingBottom: 80,
   },
   placeContainer: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    backgroundColor: 'white',
+    padding: 15,
+    marginTop: 15,
+    width: '100%',
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
   noFavoritesText: {
     padding: 16,
     textAlign: 'center',
     color: '#999',
+  },
+  lastText: {
+    fontSize: 15,
+    textAlign: 'center',
+    marginTop: 20,
+    color: 'gray',
   },
 });
 

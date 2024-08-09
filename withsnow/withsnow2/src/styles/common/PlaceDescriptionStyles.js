@@ -54,6 +54,7 @@ export default StyleSheet.create({
   },
 
   favoriteButton: {
-    marginLeft: 10,
+    position: 'absolute',
+    right: 10,
   },
 });

@@ -1,7 +1,7 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
-import styles from '../../styles/map/FavoriteListStyles';
+import {FlatList, Text, View, StyleSheet} from 'react-native';
 import PlaceDescription from '../map/placeAddiction/PlaceDescription';
+import styles from '../../styles/map/FavoriteListStyles';
 
 export default function FavoriteList({places = [], toggleFavorite}) {
   // Default value for places
@@ -9,23 +9,24 @@ export default function FavoriteList({places = [], toggleFavorite}) {
 
   return (
     <View style={styles.container}>
-      {favoritePlaces.length > 0 ? (
-        <FlatList
-          data={favoritePlaces}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({item}) => (
-            <View style={styles.placeContainer}>
-              <PlaceDescription
-                place={item}
-                toggleFavorite={() => toggleFavorite(item.id)}
-              />
-            </View>
-          )}
-          contentContainerStyle={styles.flatListContent}
-        />
-      ) : (
-        <Text style={styles.noFavoritesText}>즐겨찾기가 없습니다.</Text>
-      )}
+      <FlatList
+        data={favoritePlaces}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({item}) => (
+          <View style={styles.placeContainer}>
+            <PlaceDescription
+              place={item}
+              toggleFavorite={() => toggleFavorite(item.id)}
+            />
+          </View>
+        )}
+        contentContainerStyle={styles.flatListContent}
+        ListFooterComponent={
+          <Text style={styles.lastText}>
+            내가 가고 싶은 {'\n'} 더 많은 장소를 저장해 보세요!
+          </Text>
+        }
+      />
     </View>
   );
 }

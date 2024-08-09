@@ -1,29 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {SafeAreaView, ScrollView} from 'react-native';
 import RecommendPage_Header from '../../../component/mypage/recommendpage/RecommendPage_Header';
 import RecommendPlace from '../../../component/mypage/recommendpage/RecommendPlace';
 import places from '../../map/places';
-import {useNavigation} from '@react-navigation/native';
 import UnderBar from '../../../component/common/underBar/UnderBar';
 import styles from '../../../styles/map/MapStyles';
 
-export default function RecommendPlaceScreen({route}) {
-  const {activeTab: initialActiveTab = '마이페이지'} = route.params || {};
-  const [activeTab, setActiveTab] = useState(initialActiveTab);
-
-  useEffect(() => {
-    if (route.params?.activeTab) {
-      setActiveTab(route.params.activeTab);
-    }
-  }, [route.params?.activeTab]);
-
-  const navigation = useNavigation();
+export default function RecommendPlaceScreen({navigation}) {
+  const filteredPlaces = places.filter(place => place.id >= 1 && place.id <= 4);
 
   const handleClose = () => {
-    navigation.navigate('탐색');
+    navigation.goBack();
   };
 
-  const filteredPlaces = places.filter(place => place.id >= 1 && place.id <= 4);
+  const [activeTab, setActiveTab] = React.useState('추천 장소');
 
   return (
     <SafeAreaView style={styles.container}>

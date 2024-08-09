@@ -23,7 +23,7 @@ export default function PlaceDescription({place, toggleFavorite}) {
             style={styles.favoriteButton}>
             <FontAwesome
               name={place.isFavorite ? 'heart' : 'heart-o'}
-              size={20}
+              size={24}
               style={{color: place.isFavorite ? '#F9A596' : '#ADB0B0'}}
             />
           </TouchableOpacity>

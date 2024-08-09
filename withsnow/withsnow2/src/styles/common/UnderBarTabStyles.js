@@ -16,6 +16,6 @@ export default StyleSheet.create({
     color: '#ADB0B0',
   },
   activeText: {
-    color: '#ff6347',
+    color: '#F9A596',
   },
 });

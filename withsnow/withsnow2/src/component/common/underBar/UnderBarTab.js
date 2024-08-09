@@ -9,7 +9,7 @@ export default function UnderBarTab({icon, activeIcon, text, active, onPress}) {
       <Icon
         name={active ? activeIcon : icon}
         size={24}
-        color={active ? '#F9A596' : '#000000'}
+        color={active ? '#F9A596' : '#ADB0B0'}
         style={styles.tabIcon}
       />
       <Text style={[styles.tabText, active && styles.activeText]}>{text}</Text>
