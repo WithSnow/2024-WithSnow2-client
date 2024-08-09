@@ -1,17 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import styles from '../../../styles/common/PlaceDescriptionStyles';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function PlaceDescription({place}) {
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const toggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-    // 여기에 즐겨찾기 목록에 추가/제거하는 로직을 추가할 수 있습니다.
-  };
-
+export default function PlaceDescription({place, toggleFavorite}) {
   return (
     <View style={styles.detailsContainer}>
       <Image
@@ -23,12 +16,15 @@ export default function PlaceDescription({place}) {
         <View style={styles.nameContainer}>
           <Text style={styles.name}>{place.name}</Text>
           <TouchableOpacity
-            onPress={toggleFavorite}
+            onPress={() => {
+              console.log('Favorite button pressed'); // 확인 로그
+              toggleFavorite(place.id);
+            }}
             style={styles.favoriteButton}>
             <FontAwesome
-              name={isFavorite ? 'heart' : 'heart-o'}
-              size={20}
-              style={isFavorite ? styles.favoriteIcon : styles.nonFavoriteIcon}
+              name={place.isFavorite ? 'heart' : 'heart-o'}
+              size={24}
+              style={{color: place.isFavorite ? '#F9A596' : '#ADB0B0'}}
             />
           </TouchableOpacity>
         </View>

@@ -1,19 +1,17 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-
-  categoryContainer: {
+  categoryWrapper: {
     position: 'absolute',
-    top: 70,
-    left: '50%',
-    transform: [{translateX: -165}],
-    width: 330,
+    top: 80,
+    width: '100%',
+    alignItems: 'center',
+  },
+  categoryContainer: {
+    paddingHorizontal: 10,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   categoryButton: {
     flexDirection: 'row',
@@ -21,7 +19,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 24,
     paddingVertical: 8,
-    paddingHorizontal: 12,
+    paddingHorizontal: 18,
     marginHorizontal: 4,
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},

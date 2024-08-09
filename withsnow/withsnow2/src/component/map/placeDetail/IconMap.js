@@ -13,6 +13,9 @@ const iconMap = {
     <MaterialIcons name="accessible" size={20} color="#F9A596" />
   ),
   '경사로 있음': <MaterialIcons name="ramp-right" size={20} color="#F9A596" />,
+  '계단 없음': (
+    <MaterialCommunityIcons name="stairs-box" size={20} color="#F9A596" />
+  ),
 };
 
 export default iconMap;
