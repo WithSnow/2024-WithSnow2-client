@@ -20,7 +20,7 @@ export default function RecommendPlaceScreen({route}) {
   const navigation = useNavigation();
 
   const handleClose = () => {
-    navigation.navigate('Map');
+    navigation.navigate('탐색');
   };
 
   const filteredPlaces = places.filter(place => place.id >= 1 && place.id <= 4);

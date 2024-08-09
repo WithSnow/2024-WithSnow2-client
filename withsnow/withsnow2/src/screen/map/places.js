@@ -9,7 +9,7 @@ const places = [
     openTime: '9:00 AM - 10:00 PM',
     category: '음식',
     img: require('../../../assets/images/pizza.png'),
-    isFavorite: false,
+    isFavorite: true,
     features: ['계단 없음', '높은 턱 없음'],
     floor: ['1F'],
   },

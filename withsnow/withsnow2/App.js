@@ -6,20 +6,23 @@ import 'react-native-gesture-handler';
 import MapScreen from './src/screen/map/MapScreen';
 import MyPageScreen from './src/screen/mypage/MyPageScreen';
 import WelfareScreen from './src/screen/welfare/WelfareScreen';
-import RecommendPlaceScreen from './src/screen/mypage/recommend/RecommendPlaceScreen';
+import FavoriteListScreen from './src/screen/favoriteList/FavoriteListScreen';
+import {PlacesProvider} from './src/context/PlacesContext'; // Context 파일 import
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Map">
-        <Stack.Screen name="Map" component={MapScreen} />
-        <Stack.Screen name="RecommendPlace" component={RecommendPlaceScreen} />
-        <Stack.Screen name="Welfare" component={WelfareScreen} />
-        <Stack.Screen name="MyPage" component={MyPageScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <PlacesProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="탐색">
+          <Stack.Screen name="탐색" component={MapScreen} />
+          <Stack.Screen name="즐겨찾기" component={FavoriteListScreen} />
+          <Stack.Screen name="복지사 호출" component={WelfareScreen} />
+          <Stack.Screen name="마이페이지" component={MyPageScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PlacesProvider>
   );
 }
 

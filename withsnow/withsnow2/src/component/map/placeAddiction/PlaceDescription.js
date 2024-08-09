@@ -5,10 +5,6 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function PlaceDescription({place, toggleFavorite}) {
-  console.log(
-    `Rendering PlaceDescription for place: ${place.name}, isFavorite: ${place.isFavorite}`,
-  );
-
   return (
     <View style={styles.detailsContainer}>
       <Image

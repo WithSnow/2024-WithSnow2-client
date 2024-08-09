@@ -2,11 +2,7 @@ import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import styles from '../../styles/map/MapStyles';
 
-export default function MapComponent({
-  navigation,
-  onPlaceSelect,
-  openFavoriteList,
-}) {
+export default function MapComponent({navigation, onPlaceSelect}) {
   const mockPlace = {
     id: 4,
     name: '경복궁',
@@ -32,13 +28,9 @@ export default function MapComponent({
         style={styles.buttonOverlay}>
         <Text style={styles.buttonText}>placeDetail</Text>
       </TouchableOpacity>
+
       <TouchableOpacity
-        onPress={openFavoriteList}
-        style={[styles.buttonOverlay, {top: 200}]}>
-        <Text style={styles.buttonText}>FavoriteList</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        onPress={openRecommendPlace} // 함수 연결
+        onPress={openRecommendPlace}
         style={[styles.buttonOverlay, {top: 280}]}>
         <Text style={styles.buttonText}>RecommendPlace</Text>
       </TouchableOpacity>

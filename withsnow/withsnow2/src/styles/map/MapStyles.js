@@ -31,8 +31,8 @@ export default StyleSheet.create({
   },
   buttonOverlay: {
     position: 'absolute',
-    top: '50%', // Adjust this value to position the button as needed
-    left: 10, // Adjust this value to position the button as needed
+    top: '50%',
+    left: 10,
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     padding: 10,
     borderRadius: 5,

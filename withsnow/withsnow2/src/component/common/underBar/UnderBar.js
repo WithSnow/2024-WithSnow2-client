@@ -1,43 +1,53 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Animated} from 'react-native';
+import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import UnderBarTab from './UnderBarTab';
 import styles from '../../../styles/common/UnderBarStyles';
-import {useNavigation} from '@react-navigation/native';
 
 export default function UnderBar({activeTab, setActiveTab}) {
   const navigation = useNavigation();
 
   const handleTabPress = tabName => {
-    setActiveTab(tabName);
-    if (tabName === '탐색') {
-      navigation.navigate('Map', {activeTab: tabName});
-    } else if (tabName === '마이페이지') {
-      navigation.navigate('MyPage', {activeTab: tabName});
-    } else if (tabName === '복지사 호출') {
-      navigation.navigate('Welfare', {activeTab: tabName});
+    if (activeTab !== tabName) {
+      navigation.navigate(tabName);
     }
-    // 즐찾 추가해야함
   };
+
+  // 포커스를 받을 때 activeTab 상태를 네비게이션 상태와 동기화
+  useFocusEffect(
+    React.useCallback(() => {
+      setActiveTab(
+        navigation.getState().routes[navigation.getState().index].name,
+      );
+    }, [navigation]),
+  );
 
   return (
     <Animated.View style={styles.underBarContainer}>
       <UnderBarTab
-        img={require('../../../../assets/images/underBar_map.png')}
-        activeImg={require('../../../../assets/images/underBar_activemap.png')}
+        icon="map-outline"
+        activeIcon="map"
         text="탐색"
         active={activeTab === '탐색'}
         onPress={() => handleTabPress('탐색')}
       />
       <UnderBarTab
-        img={require('../../../../assets/images/underBar_welfare.png')}
-        activeImg={require('../../../../assets/images/underBar_activewelfare.png')}
+        icon="heart-outline"
+        activeIcon="heart"
+        text="즐겨찾기"
+        active={activeTab === '즐겨찾기'}
+        onPress={() => handleTabPress('즐겨찾기')}
+      />
+      <UnderBarTab
+        icon="call-outline"
+        activeIcon="call"
         text="복지사 호출"
         active={activeTab === '복지사 호출'}
         onPress={() => handleTabPress('복지사 호출')}
       />
       <UnderBarTab
-        img={require('../../../../assets/images/underBar_myPage.png')}
-        activeImg={require('../../../../assets/images/underBar_activemyPage.png')}
+        icon="person-outline"
+        activeIcon="person"
         text="마이페이지"
         active={activeTab === '마이페이지'}
         onPress={() => handleTabPress('마이페이지')}
