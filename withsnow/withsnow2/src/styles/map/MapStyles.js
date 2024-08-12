@@ -24,7 +24,6 @@ export default StyleSheet.create({
     zIndex: 10,
     alignItems: 'center',
   },
-
   buttonText: {
     fontSize: 18,
     color: 'blue',
@@ -33,8 +32,16 @@ export default StyleSheet.create({
     position: 'absolute',
     top: '50%',
     left: 10,
+    transform: [{translateY: -50}],
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
     padding: 10,
     borderRadius: 5,
+  },
+  placeCardContainer: {
+    position: 'absolute',
+    bottom: 100,
+    left: 0,
+    right: 0,
+    paddingVertical: 10,
   },
 });

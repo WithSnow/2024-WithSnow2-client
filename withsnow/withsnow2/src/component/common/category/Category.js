@@ -2,49 +2,35 @@ import React from 'react';
 import {View, TouchableOpacity, Image, Text, ScrollView} from 'react-native';
 import styles from '../../../styles/common/CategoryStyles';
 
-const Category = () => {
+const categories = [
+  {name: '음식점', icon: require('../../../../assets/images/food.png')},
+  {name: '카페', icon: require('../../../../assets/images/cafe.png')},
+  {
+    name: '문화공간',
+    icon: require('../../../../assets/images/recommend.png'),
+  },
+  // 필요한 만큼 카테고리 추가
+];
+
+const Category = ({selectedCategory, onSelectCategory}) => {
   return (
     <View style={styles.categoryWrapper}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.categoryContainer}>
-        <TouchableOpacity style={styles.categoryButton}>
-          <Image
-            source={require('../../../../assets/images/food.png')}
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryText}>음식점</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryButton}>
-          <Image
-            source={require('../../../../assets/images/cafe.png')}
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryText}>카페</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryButton}>
-          <Image
-            source={require('../../../../assets/images/recommend.png')}
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryText}>베프픽!추천장소</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryButton}>
-          <Image
-            source={require('../../../../assets/images/recommend.png')}
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryText}>베프픽!추천장소</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.categoryButton}>
-          <Image
-            source={require('../../../../assets/images/recommend.png')}
-            style={styles.categoryIcon}
-          />
-          <Text style={styles.categoryText}>베프픽!추천장소</Text>
-        </TouchableOpacity>
-        {/* 필요한 만큼 카테고리 버튼 추가 */}
+        {categories.map((category, index) => {
+          const isActive = selectedCategory === category.name;
+          return (
+            <TouchableOpacity
+              key={index}
+              style={[styles.categoryButton, isActive && styles.activeButton]}
+              onPress={() => onSelectCategory(category.name)}>
+              <Image source={category.icon} style={styles.categoryIcon} />
+              <Text style={styles.categoryText}>{category.name}</Text>
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
     </View>
   );

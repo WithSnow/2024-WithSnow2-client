@@ -2,9 +2,9 @@ import React from 'react';
 import {FlatList, Text, View, StyleSheet} from 'react-native';
 import PlaceDescription from '../map/placeAddiction/PlaceDescription';
 import styles from '../../styles/map/FavoriteListStyles';
+import CategoryCard from '../common/category/CategoryCard';
 
 export default function FavoriteList({places = [], toggleFavorite}) {
-  // Default value for places
   const favoritePlaces = places.filter(place => place.isFavorite);
 
   return (
@@ -14,7 +14,7 @@ export default function FavoriteList({places = [], toggleFavorite}) {
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (
           <View style={styles.placeContainer}>
-            <PlaceDescription
+            <CategoryCard
               place={item}
               toggleFavorite={() => toggleFavorite(item.id)}
             />

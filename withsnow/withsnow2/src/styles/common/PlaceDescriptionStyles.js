@@ -23,14 +23,12 @@ export default StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     color: '#0057FF',
-    fontFamily: 'Pretendard',
     letterSpacing: 1,
   },
   address: {
     fontSize: 12,
     fontWeight: '400',
     color: '#696969',
-    fontFamily: 'Pretendard',
     marginVertical: 5,
     letterSpacing: 1,
   },
@@ -41,7 +39,6 @@ export default StyleSheet.create({
   phone: {
     fontSize: 12,
     fontWeight: '400',
-    fontFamily: 'Pretendard',
     color: '#696969',
     letterSpacing: 1,
   },
@@ -49,10 +46,8 @@ export default StyleSheet.create({
     fontSize: 12,
     fontWeight: '400',
     color: '#696969',
-    fontFamily: 'Pretendard',
     letterSpacing: 1,
   },
-
   favoriteButton: {
     position: 'absolute',
     right: 10,

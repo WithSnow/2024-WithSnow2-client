@@ -27,6 +27,10 @@ export default StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  activeButton: {
+    color: '#FFFFFF',
+    backgroundColor: '#F9A596',
+  },
   categoryIcon: {
     width: 24,
     height: 24,
