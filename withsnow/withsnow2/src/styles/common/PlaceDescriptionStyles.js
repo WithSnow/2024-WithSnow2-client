@@ -54,12 +54,7 @@ export default StyleSheet.create({
   },
 
   favoriteButton: {
-    marginLeft: 10,
-  },
-  favoriteIcon: {
-    color: '#F9A596',
-  },
-  nonFavoriteIcon: {
-    color: '#ADB0B0',
+    position: 'absolute',
+    right: 10,
   },
 });

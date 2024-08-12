@@ -13,7 +13,7 @@ import ActionButton from '../placeAddiction/ActionButton';
 import Features from '../placeAddiction/Features';
 import styles from '../../../styles/common/PlaceDetailStyles';
 
-const PlaceDetail = ({place, setSelectedPlace}) => {
+const PlaceDetail = ({place, setSelectedPlace, toggleFavorite}) => {
   if (!place) return null;
 
   const translateY = useSharedValue(0);
@@ -27,10 +27,10 @@ const PlaceDetail = ({place, setSelectedPlace}) => {
         runOnJS(setSelectedPlace)(null);
       } else {
         translateY.value = withSpring(0, {
-          damping: 100,
-          stiffness: 70,
-          mass: 10,
-          overshootClamping: false,
+          damping: 20,
+          stiffness: 90,
+          mass: 1,
+          overshootClamping: true,
           restDisplacementThreshold: 0.01,
           restSpeedThreshold: 0.01,
         });
@@ -47,10 +47,23 @@ const PlaceDetail = ({place, setSelectedPlace}) => {
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
       <Animated.View style={[styles.container, animatedStyle]}>
-        <PlaceDescription place={place} />
+        <View style={styles.handle} />
+        <PlaceDescription place={place} toggleFavorite={toggleFavorite} />
         <View style={styles.actionContainer}>
-          <ActionButton label="출발지" isStart={true} onPress={() => {}} />
-          <ActionButton label="도착지" isStart={false} onPress={() => {}} />
+          <ActionButton
+            label="출발지"
+            isStart={true}
+            onPress={() => {
+              /* 출발지 처리 로직 추가 */
+            }}
+          />
+          <ActionButton
+            label="도착지"
+            isStart={false}
+            onPress={() => {
+              /* 도착지 처리 로직 추가 */
+            }}
+          />
         </View>
         <Features features={place.features} />
       </Animated.View>

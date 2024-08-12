@@ -3,9 +3,9 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   featureContainer: {
     flexDirection: 'row',
-    marginTop: 10,
-    width: '100%',
     flexWrap: 'wrap',
+    marginTop: 10,
+    justifyContent: 'flex-start',
   },
   feature: {
     flexDirection: 'row',
