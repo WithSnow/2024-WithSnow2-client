@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   searchBarContainer: {
-    width: '90%',
+    width: '95%',
     height: 48,
     borderRadius: 24,
     backgroundColor: 'white',
