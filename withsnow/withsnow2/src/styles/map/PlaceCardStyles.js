@@ -1,22 +1,12 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    alignItems: 'center',
+  container: {
     flexDirection: 'row',
-    paddingLeft: 12,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    marginLeft: 15,
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 5,
   },
   imageContainer: {
-    width: 90,
-    height: 90,
+    width: 110,
+    height: 110,
     borderRadius: 8,
     overflow: 'hidden',
   },
@@ -30,6 +20,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   name: {
+    marginTop: -5,
     color: '#37363C',
     fontSize: 14,
     fontWeight: '500',
@@ -42,14 +33,16 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   actionContainer: {
+    position: 'absolute',
     flexDirection: 'row',
-    marginTop: -10,
-    transform: [{scale: 0.8}],
-    marginRight: -3,
+    transform: [{scale: 0.9}],
+    bottom: 10,
+    right: 10,
+    height: 40,
   },
   favoriteButton: {
-    left: '85%',
-    bottom: '37%',
+    position: 'absolute',
+    right: 10,
   },
 });
 
