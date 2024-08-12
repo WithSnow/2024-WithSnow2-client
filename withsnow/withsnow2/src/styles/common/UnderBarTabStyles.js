@@ -9,7 +9,6 @@ export default StyleSheet.create({
   iconBox: {
     justifyContent: 'center',
     alignItems: 'center',
-    // marginLeft: 10,
   },
   tabIcon: {
     width: 24,
