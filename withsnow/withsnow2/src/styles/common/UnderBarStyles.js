@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   underBarContainer: {
+    felx: 1,
     position: 'absolute',
     bottom: 0,
     left: 0,
