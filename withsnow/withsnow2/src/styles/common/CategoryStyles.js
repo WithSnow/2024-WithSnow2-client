@@ -31,16 +31,14 @@ export default StyleSheet.create({
     color: '#FFFFFF',
     backgroundColor: '#F9A596',
   },
-  categoryIcon: {
-    width: 24,
-    height: 24,
-    marginRight: 8,
+  activeText: {
+    color: 'white',
   },
   categoryText: {
     color: '#696969',
-    fontSize: 13,
-    fontFamily: 'Pretendard',
+    fontSize: 14,
     fontWeight: '400',
-    wordWrap: 'break-word',
+    paddingBottom: 4,
+    marginLeft: 5,
   },
 });
