@@ -4,6 +4,7 @@ import PlaceDescription from '../map/placeAddiction/PlaceDescription';
 import styles from '../../styles/map/FavoriteListStyles';
 import CategoryCard from '../common/category/CategoryCard';
 import PlaceCard from '../map/placeAddiction/PlaceCard';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function FavoriteList({places = [], toggleFavorite}) {
   const favoritePlaces = places.filter(place => place.isFavorite);
@@ -11,6 +12,14 @@ export default function FavoriteList({places = [], toggleFavorite}) {
   return (
     <View style={styles.container}>
       <FlatList
+        ListHeaderComponent={
+          <View style={styles.recentButton}>
+            <Text style={styles.recentText}>
+              최신순
+              <Icon name="keyboard-arrow-down" style={styles.recentIcon}></Icon>
+            </Text>
+          </View>
+        }
         data={favoritePlaces}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => (

@@ -13,10 +13,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 10,
     elevation: 5,
+    overflow: 'visible',
   },
   imageContainer: {
     width: 90,
     height: 90,
+
     borderRadius: 8,
     overflow: 'hidden',
   },
