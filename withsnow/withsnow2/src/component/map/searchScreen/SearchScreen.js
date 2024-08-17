@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   View,
   Text,
-  Image,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import styles from '../../../styles/map/SearchScreenStyles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -27,39 +28,60 @@ export default function SearchScreen({navigation}) {
   const [filteredLocation, setFilteredLocation] = useState([]);
   const [recentSearches, setRecentSearches] = useState([]);
 
-  const addRecentSearch = location => {
-    setRecentSearches(prevRecentSearches => [
-      location.name,
-      ...prevRecentSearches.filter(item => item !== location.name),
-    ]);
-  };
-
-  // 검색어 따라 장소 필터링
   const searchLocation = text => {
     setSearchText(text);
 
     if (text.trim().length > 0) {
-      const location = mockLocations.find(loc => loc.name.includes(text));
-      if (location) {
-        addRecentSearch(location);
-      }
+      const results = mockLocations.filter(location =>
+        location.name.includes(text),
+      );
+      setFilteredLocation(results);
+    } else {
+      setFilteredLocation([]);
     }
   };
 
-  // 장소 선택 -> 최근 검색 기록에 추가, 탐색 화면 이동
   const selectLocation = location => {
-    addRecentSearch(location);
+    setRecentSearches(prevRecentSearches => [
+      location.name,
+      ...prevRecentSearches.filter(item => item !== location.name),
+    ]);
     navigation.navigate('탐색', {selectedPlace: location});
+  };
+
+  const handleBackPress = () => {
+    if (searchText.trim()) {
+      setRecentSearches(prevRecentSearches => [
+        searchText,
+        ...prevRecentSearches.filter(item => item !== searchText),
+      ]);
+    }
+
+    setSearchText('');
+  };
+
+  const clearRecentSearches = () => {
+    setRecentSearches([]);
+  };
+
+  const deleteRecentResearch = itemToDelete => {
+    setRecentSearches(prevRecentSearches =>
+      prevRecentSearches.filter(item => item !== itemToDelete),
+    );
   };
 
   // 즐겨찾기 장소 필터링
   const favoritePlaces = places.filter(place => place.isFavorite);
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       {/* 검색바 */}
       <View style={styles.searchBarContainer}>
-        <Icon style={styles.searchIcon} name="arrow-back-ios"></Icon>
+        <TouchableOpacity onPress={handleBackPress}>
+          <Icon style={styles.searchIcon} name="arrow-back-ios" />
+        </TouchableOpacity>
         <TextInput
           placeholder="베프에서 핫플레이스를 검색해보세요."
           value={searchText}
@@ -67,8 +89,10 @@ export default function SearchScreen({navigation}) {
           style={styles.searchBar}
         />
       </View>
+
       {/* 구분선 */}
       <View style={styles.divider} />
+
       {/* 즐겨찾기(가로 스크롤) */}
       <FlatList
         data={favoritePlaces}
@@ -85,24 +109,41 @@ export default function SearchScreen({navigation}) {
         showsHorizontalScrollIndicator={false}
       />
 
-      {/* 필터링 장소 리스트 */}
-      {/* <FlatList
-        data={filteredLocation}
-        keyExtractor={item => item.id.toString()}
-        renderItem={({item}) => (
-          <TouchableOpacity onPress={() => selectLocation(item)}>
-            <Text style={styles.name}>{item.name}</Text>
-          </TouchableOpacity>
-        )}
-      /> */}
-
-      {/* 최근 검색 리스트 */}
-      <Text style={styles.recentSearch}>최근 검색</Text>
-      <FlatList
-        data={recentSearches}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => <Text style={styles.recentItem}>{item}</Text>}
-      />
-    </View>
+      {/* 최근 검색 섹션은 검색 중이 아닐 때만 표시 */}
+      {!searchText ? (
+        <View style={styles.recentSearchContainer}>
+          <View style={styles.recentHeaderContainer}>
+            <Text style={styles.recentSearches}>최근 검색</Text>
+            {recentSearches.length > 0 && (
+              <TouchableOpacity onPress={clearRecentSearches}>
+                <Text style={styles.clearButton}>전체 삭제</Text>
+              </TouchableOpacity>
+            )}
+          </View>
+          <FlatList
+            data={recentSearches}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <View style={styles.recentItemContainer}>
+                <Text style={styles.recentItem}>{item}</Text>
+                <TouchableOpacity onPress={() => deleteRecentResearch(item)}>
+                  <Icon name="close" style={styles.deleteIcon} />
+                </TouchableOpacity>
+              </View>
+            )}
+          />
+        </View>
+      ) : (
+        <FlatList
+          data={filteredLocation}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({item}) => (
+            <TouchableOpacity onPress={() => selectLocation(item)}>
+              <Text style={styles.name}>{item.name}</Text>
+            </TouchableOpacity>
+          )}
+        />
+      )}
+    </KeyboardAvoidingView>
   );
 }
