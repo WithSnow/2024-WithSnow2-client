@@ -17,7 +17,6 @@ export default function PlaceDescription({place, toggleFavorite}) {
           <Text style={styles.name}>{place.name}</Text>
           <TouchableOpacity
             onPress={() => {
-              console.log('Favorite button pressed'); // 확인 로그
               toggleFavorite(place.id);
             }}
             style={styles.favoriteButton}>

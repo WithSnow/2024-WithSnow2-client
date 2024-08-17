@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   placeContainer: {
     backgroundColor: 'white',
-    padding: 15,
+    padding: 12,
     marginTop: 15,
     width: '100%',
     borderRadius: 20,
@@ -33,6 +33,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
     color: 'gray',
+  },
+  recentButton: {
+    width: '20%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#F9A596',
+    borderRadius: 15,
+    padding: 4,
+    paddingHorizontal: 8,
+  },
+  recentText: {
+    fontSize: 14,
+    fontWeight: '400',
+    color: '#F9A596',
+    marginBottom: 3,
+    marginLeft: 2,
   },
 });
 

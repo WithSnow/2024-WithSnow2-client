@@ -72,3 +72,5 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+withsnow/withsnow2/android/app/src/main/AndroidManifest.xml
