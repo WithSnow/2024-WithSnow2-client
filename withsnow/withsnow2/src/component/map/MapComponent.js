@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import styles from '../../styles/map/MapStyles';
+import MapView from 'react-native-maps';
 
 export default function MapComponent({navigation, onPlaceSelect}) {
   const mockPlace = {
@@ -22,7 +23,15 @@ export default function MapComponent({navigation, onPlaceSelect}) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.mapPlaceholder} />
+      <MapView
+        style={styles.mapPlaceholder}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      />
       <TouchableOpacity
         onPress={() => onPlaceSelect(mockPlace)}
         style={styles.buttonOverlay}>

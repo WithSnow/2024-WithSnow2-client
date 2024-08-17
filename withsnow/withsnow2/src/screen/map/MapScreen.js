@@ -17,20 +17,28 @@ export default function MapScreen({navigation, route}) {
   const [isRecommendPlaceVisible, setRecommendPlaceVisible] = useState(false);
   const {places, toggleFavorite} = usePlacesContext(); // Context에서 상태와 함수를 가져옴
 
+  // 장소 선택
   const handlePlaceSelect = place => {
+    // 장소의 이름으로 매칭 -> 선택되면 ID 저장
     const selected = places.find(p => p.name === place.name);
     if (selected) {
       setSelectedPlaceId(selected.id);
     }
   };
 
-  const selectedPlace = places.find(place => place.id === selectedPlaceId);
-
   useEffect(() => {
-    if (route.params?.activeTab) {
-      setActiveTab(route.params.activeTab);
+    if (route.params?.selectedPlace) {
+      const selectedPlace = places.find(
+        p => p.name === route.params.selectedPlace.name,
+      );
+      if (selectedPlace) {
+        setSelectedPlaceId(selectedPlace.id);
+      }
     }
-  }, [route.params?.activeTab]);
+  }, [route.params?.selectedPlace]);
+
+  // 선택된 장소 객체를 찾음
+  const selectedPlace = places.find(place => place.id === selectedPlaceId);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -43,6 +51,7 @@ export default function MapScreen({navigation, route}) {
       <View style={styles.searchBarContainer}>
         <SearchBar />
       </View>
+
       <Category />
       <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />
       {selectedPlace && (

@@ -9,6 +9,7 @@ import WelfareScreen from './src/screen/welfare/WelfareScreen';
 import FavoriteListScreen from './src/screen/favoriteList/FavoriteListScreen';
 import RecommendPlaceScreen from './src/screen/mypage/recommend/RecommendPlaceScreen';
 import {PlacesProvider} from './src/context/PlacesContext'; // Context 파일 import
+import SearchScreen from './src/component/map/searchScreen/SearchScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ function App() {
           <Stack.Screen name="즐겨찾기" component={FavoriteListScreen} />
           <Stack.Screen name="복지사 호출" component={WelfareScreen} />
           <Stack.Screen name="마이페이지" component={MyPageScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} />
 
           {/* 임시 */}
           <Stack.Screen
