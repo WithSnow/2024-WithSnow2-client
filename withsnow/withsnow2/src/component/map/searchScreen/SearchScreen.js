@@ -12,11 +12,12 @@ import styles from '../../../styles/map/SearchScreenStyles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import places from '../../../screen/map/places';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const mockLocations = [
   {
     id: 1,
-    name: 'sookmyung',
+    name: '숙명여자대학교',
     details: '서울 용산구 청파로47길 100',
   },
   {id: 2, name: '서울역', details: '서울 중구 봉래동2가 122-15'},
@@ -125,6 +126,7 @@ export default function SearchScreen({navigation}) {
             keyExtractor={(item, index) => index.toString()}
             renderItem={({item}) => (
               <View style={styles.recentItemContainer}>
+                <FontAwesome5 name="map-marker-alt" style={styles.recentIcon} />
                 <Text style={styles.recentItem}>{item}</Text>
                 <TouchableOpacity onPress={() => deleteRecentResearch(item)}>
                   <Icon name="close" style={styles.deleteIcon} />
