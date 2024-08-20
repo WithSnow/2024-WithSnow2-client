@@ -34,6 +34,7 @@ export default StyleSheet.create({
     fontSize: 14,
     fontWeight: '700',
     marginLeft: 15,
+    lineHeight: 16.8,
   },
   checkBox: {
     backgroundColor: '#E7E9EE',
@@ -52,8 +53,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
   },
-  tag: {
+  tagText: {
     color: '#7A849C',
     fontSize: 12,
     fontWeight: '500',
@@ -65,6 +67,7 @@ export default StyleSheet.create({
     paddingVertical: 7,
     paddingHorizontal: 10,
     marginRight: 10,
+    lineHeight: 14.4,
   },
 
   divider: {
@@ -76,7 +79,6 @@ export default StyleSheet.create({
 
   underContainer: {
     flexDirection: 'row',
-
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -87,11 +89,13 @@ export default StyleSheet.create({
     borderRightColor: 'rgba(122, 132, 156, 0.5)',
     borderRightWidth: 1.5,
     paddingRight: 10,
+    lineHeight: 14.4,
   },
   distance: {
     color: '#19BAFF',
     fontSize: 12,
     fontWeight: '600',
     marginLeft: 10,
+    lineHeight: 14.4,
   },
 });

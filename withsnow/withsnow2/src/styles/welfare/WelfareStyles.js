@@ -11,9 +11,10 @@ export default StyleSheet.create({
     backgroundColor: '#19BAFF',
     borderRadius: 10,
     alignSelf: 'flex-end',
-    marginBottom: 10,
+    marginBottom: 15,
     marginTop: 15,
     marginRight: 15,
+    textAlign: 'center',
   },
   callText: {
     color: '#FFFFFF',
@@ -21,8 +22,7 @@ export default StyleSheet.create({
     fontWeight: '600',
     padding: 8,
     paddingHorizontal: 30,
-    textAlign: 'center',
-    justifyContent: 'center',
+    lineHeight: 15.6,
   },
 
   //오버레이

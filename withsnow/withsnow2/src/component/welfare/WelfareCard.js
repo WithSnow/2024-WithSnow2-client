@@ -24,6 +24,7 @@ const WelfareCard = ({welfare, welfareList, setWelfareList}) => {
           {/* 복지사 이름 */}
           <Text style={styles.name}>{welfare.name} 복지사님</Text>
         </View>
+
         {/* 복지사 체크리스트 */}
         <TouchableOpacity
           style={[styles.checkBox, isAdded && styles.activeCheckBox]}
@@ -31,6 +32,7 @@ const WelfareCard = ({welfare, welfareList, setWelfareList}) => {
           <AntDesign name="check" style={styles.checkBoxIcon} />
         </TouchableOpacity>
       </View>
+
       {/* 복지사 태그 */}
       <View style={styles.tagContainer}>
         {welfare.tags.map((tag, index) => (
@@ -39,12 +41,14 @@ const WelfareCard = ({welfare, welfareList, setWelfareList}) => {
           </View>
         ))}
       </View>
+
       {/* 구분선 */}
       <View style={styles.divider} />
 
       <View style={styles.underContainer}>
         {/* 복지사 장소 */}
         <Text style={styles.place}>{welfare.place}</Text>
+
         {/* 복지사 거리 */}
         <Text style={styles.distance}>{welfare.distance}</Text>
       </View>
