@@ -4,6 +4,7 @@ import styles from '../../styles/map/MapStyles';
 import UnderBar from '../../component/common/underBar/UnderBar';
 import WelfareComponent from '../../component/welfare/WelfareComponent';
 import {useFocusEffect} from '@react-navigation/native';
+import {WelfareProvider} from '../../context/WelfareContext';
 
 export default function WelfareScreen({navigation, route}) {
   const {activeTab: initialActiveTab = '복지사 호출'} = route.params || {};
@@ -21,7 +22,9 @@ export default function WelfareScreen({navigation, route}) {
 
   return (
     <View style={styles.container}>
-      <WelfareComponent />
+      <WelfareProvider>
+        <WelfareComponent />
+      </WelfareProvider>
 
       <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />
     </View>

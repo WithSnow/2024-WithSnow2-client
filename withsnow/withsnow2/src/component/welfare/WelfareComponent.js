@@ -1,12 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {FlatList, View, TouchableOpacity, Text} from 'react-native';
 import styles from '../../styles/welfare/WelfareStyles.js';
 import WelfareCard from './WelfareCard.js';
 import welfares from '../../screen/welfare/welfares.js';
 import WelfareMessage from './WelfareMessage.js';
+import {WelfareContext} from '../../context/WelfareContext.js';
 
 export default function WelfareComponent() {
-  const [welfareList, setWelfareList] = useState([]);
+  const {welfareList, setWelfareList} = useContext(WelfareContext);
   const [showWelfareMessage, setShowWelfareMessage] = useState(false);
 
   const handleShowMessage = () => {

@@ -1,9 +1,12 @@
-import React, {memo} from 'react';
+import React, {useContext} from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from '../../styles/welfare/WelfareCardStyles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {WelfareContext} from '../../context/WelfareContext';
 
-const WelfareCard = ({welfare, welfareList, setWelfareList}) => {
+const WelfareCard = ({welfare}) => {
+  const {welfareList, setWelfareList} = useContext(WelfareContext);
+
   const addWelfare = welfare => {
     setWelfareList(prevList =>
       prevList.some(item => item.id === welfare.id)
