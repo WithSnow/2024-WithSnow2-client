@@ -1,9 +1,9 @@
 import React from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import styles from '../../styles/map/MapStyles';
 import MapView from 'react-native-maps';
 
-export default function MapComponent({navigation, onPlaceSelect}) {
+export default function MapComponent({ navigation, onPlaceSelect }) {
   const mockPlace = {
     id: 4,
     name: '경복궁',
@@ -15,10 +15,6 @@ export default function MapComponent({navigation, onPlaceSelect}) {
     isFavorite: false,
     features: ['높은 턱 없음', '계단 없음', '휠체어 이용 가능', '경사로 있음'],
     floor: '1F',
-  };
-
-  const openRecommendPlace = () => {
-    navigation.navigate('RecommendPlace');
   };
 
   return (
@@ -38,11 +34,7 @@ export default function MapComponent({navigation, onPlaceSelect}) {
         <Text style={styles.buttonText}>placeDetail</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        onPress={openRecommendPlace}
-        style={[styles.buttonOverlay, {top: 280}]}>
-        <Text style={styles.buttonText}>RecommendPlace</Text>
-      </TouchableOpacity>
+
     </View>
   );
 }
