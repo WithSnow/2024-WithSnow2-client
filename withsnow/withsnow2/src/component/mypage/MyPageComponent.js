@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from '../../styles/mypage/MyPageStyles';
 
 export default function MyPageComponent({ username }) {
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>
@@ -24,13 +26,19 @@ export default function MyPageComponent({ username }) {
                         님
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => navigation.navigate('상세페이지')}
+                >
                     <Text style={styles.buttonText}>내 정보</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>설정</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => navigation.navigate('베프 추천 장소')}
+                >
                     <Text style={styles.aiText}>AI</Text>
                     <Text style={styles.buttonText}>개인별 맞춤 장소 추천</Text>
                     <Text style={styles.premiumText}>PREMIUM</Text>
@@ -46,7 +54,7 @@ export default function MyPageComponent({ username }) {
                 </TouchableOpacity>
             </View>
             <View style={styles.bottomButton}>
-                <TouchableOpacity style={styles.premiumbButton}>
+                <TouchableOpacity style={styles.premiumButton}>
                     <Text style={styles.premiumbButtonText}>프리미엄 구독 사용 중</Text>
                 </TouchableOpacity>
 

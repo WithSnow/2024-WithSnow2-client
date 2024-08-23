@@ -57,7 +57,7 @@ export default StyleSheet.create({
         fontSize: 13,
         letterSpacing: 1,
     },
-    premiumbButton: {
+    premiumButton: {
         backgroundColor: '#F9A596', // 버튼 배경색상
         paddingVertical: 15,
         paddingHorizontal: 30,
