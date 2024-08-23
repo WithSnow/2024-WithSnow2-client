@@ -8,7 +8,6 @@ import { useFocusEffect } from '@react-navigation/native';
 export default function MyPageScreen({ navigation, route }) {
   const { activeTab: initialActiveTab = '마이페이지' } = route.params || {};
   const [activeTab, setActiveTab] = useState(initialActiveTab);
-  //const navigation = useNavigation();
 
   useFocusEffect(
     React.useCallback(() => {

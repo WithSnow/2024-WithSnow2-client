@@ -1,12 +1,14 @@
 import React from 'react';
-import {SafeAreaView, ScrollView} from 'react-native';
+import { SafeAreaView, ScrollView } from 'react-native';
 import RecommendPage_Header from '../../../component/mypage/recommendpage/RecommendPage_Header';
 import RecommendPlace from '../../../component/mypage/recommendpage/RecommendPlace';
 import places from '../../map/places';
 import UnderBar from '../../../component/common/underBar/UnderBar';
 import styles from '../../../styles/map/MapStyles';
+import { useFocusEffect } from '@react-navigation/native';
 
-export default function RecommendPlaceScreen({navigation}) {
+export default function RecommendPlaceScreen({ navigation }) {
+
   const filteredPlaces = places.filter(place => place.id >= 1 && place.id <= 4);
 
   const handleClose = () => {
