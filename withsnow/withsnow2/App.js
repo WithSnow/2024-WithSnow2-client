@@ -11,7 +11,7 @@ import RecommendPlaceScreen from './src/screen/mypage/recommend/RecommendPlaceSc
 import MatchWelfare from './src/component/welfare/MatchWelfare';
 import WelfareMessage from './src/component/welfare/WelfareMessage';
 import MyPageDetailScreen from './src/screen/mypage/MyPageDetailScreen';
-import { PlacesProvider } from './src/context/PlacesContext'; // Context 파일 import
+import {PlacesProvider} from './src/context/PlacesContext'; // Context 파일 import
 
 const Stack = createStackNavigator();
 
@@ -27,7 +27,10 @@ function App() {
           <Stack.Screen name="복지사 배정" component={MatchWelfare} />
           <Stack.Screen name="마이페이지" component={MyPageScreen} />
           <Stack.Screen name="상세페이지" component={MyPageDetailScreen} />
-          <Stack.Screen name="베프 추천 장소" component={RecommendPlaceScreen} />
+          <Stack.Screen
+            name="베프 추천 장소"
+            component={RecommendPlaceScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </PlacesProvider>

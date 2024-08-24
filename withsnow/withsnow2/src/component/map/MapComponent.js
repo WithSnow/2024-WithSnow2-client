@@ -1,9 +1,9 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import styles from '../../styles/map/MapStyles';
 import MapView from 'react-native-maps';
 
-export default function MapComponent({ navigation, onPlaceSelect }) {
+export default function MapComponent({navigation, onPlaceSelect}) {
   const mockPlace = {
     id: 4,
     name: '경복궁',
@@ -19,22 +19,22 @@ export default function MapComponent({ navigation, onPlaceSelect }) {
 
   return (
     <View style={styles.container}>
-      <MapView
+      {/* <MapView
         style={styles.mapPlaceholder}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: 37.546603,
+          longitude: 126.964759,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      />
+      /> */}
+
+      <View style={styles.mapPlaceholder} />
       <TouchableOpacity
         onPress={() => onPlaceSelect(mockPlace)}
         style={styles.buttonOverlay}>
         <Text style={styles.buttonText}>placeDetail</Text>
       </TouchableOpacity>
-
-
     </View>
   );
 }

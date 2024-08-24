@@ -13,6 +13,19 @@ import ActionButton from '../placeAddiction/ActionButton';
 import Features from '../placeAddiction/Features';
 import styles from '../../../styles/common/PlaceDetailStyles';
 
+const mapFeature = features => {
+  const featureMapping = {
+    elevator: '엘레베이터 있음',
+    step_free: '계단 없음',
+    wheelchair_accessible: '휠체어 이용 가능 통로 있음',
+    ramp: '경사로 있음',
+  };
+
+  return Object.keys(features)
+    .filter(key => features[key])
+    .map(key => featureMapping[key]);
+};
+
 const PlaceDetail = ({place, setSelectedPlace, toggleFavorite}) => {
   if (!place) return null;
 
@@ -44,6 +57,8 @@ const PlaceDetail = ({place, setSelectedPlace, toggleFavorite}) => {
     };
   });
 
+  const setFeatures = mapFeature(place.features);
+
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
       <Animated.View style={[styles.container, animatedStyle]}>
@@ -65,7 +80,7 @@ const PlaceDetail = ({place, setSelectedPlace, toggleFavorite}) => {
             }}
           />
         </View>
-        <Features features={place.features} />
+        <Features features={setFeatures} />
       </Animated.View>
     </PanGestureHandler>
   );
