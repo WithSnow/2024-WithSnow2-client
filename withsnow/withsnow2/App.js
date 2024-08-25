@@ -12,6 +12,7 @@ import MatchWelfare from './src/component/welfare/MatchWelfare';
 import WelfareMessage from './src/component/welfare/WelfareMessage';
 import MyPageDetailScreen from './src/screen/mypage/MyPageDetailScreen';
 import {PlacesProvider} from './src/context/PlacesContext'; // Context 파일 import
+import NavigationScreen from './src/screen/map/NavigationScreen';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,7 @@ function App() {
             name="베프 추천 장소"
             component={RecommendPlaceScreen}
           />
+          <Stack.Screen name="내비게이션" component={NavigationScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </PlacesProvider>
