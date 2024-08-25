@@ -17,31 +17,23 @@ export default function MapComponent({navigation, onPlaceSelect}) {
     floor: '1F',
   };
 
-  const openRecommendPlace = () => {
-    navigation.navigate('RecommendPlace');
-  };
-
   return (
     <View style={styles.container}>
-      <MapView
+      {/* <MapView
         style={styles.mapPlaceholder}
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: 37.546603,
+          longitude: 126.964759,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      />
+      /> */}
+
+      <View style={styles.mapPlaceholder} />
       <TouchableOpacity
         onPress={() => onPlaceSelect(mockPlace)}
         style={styles.buttonOverlay}>
         <Text style={styles.buttonText}>placeDetail</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        onPress={openRecommendPlace}
-        style={[styles.buttonOverlay, {top: 280}]}>
-        <Text style={styles.buttonText}>RecommendPlace</Text>
       </TouchableOpacity>
     </View>
   );

@@ -21,7 +21,6 @@ export const PlacesProvider = ({children}) => {
   );
 };
 
-// Custom hook to use the PlacesContext
 export const usePlacesContext = () => {
   const context = useContext(PlacesContext);
   if (context === undefined) {

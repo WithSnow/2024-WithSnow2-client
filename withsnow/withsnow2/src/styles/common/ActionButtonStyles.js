@@ -13,7 +13,6 @@ export default StyleSheet.create({
   startText: {
     color: 'white',
     fontSize: 13,
-    fontFamily: 'Pretendard',
     fontWeight: 'bold',
   },
   endButton: {
@@ -30,7 +29,6 @@ export default StyleSheet.create({
   endText: {
     color: '#19BAFF',
     fontSize: 13,
-    fontFamily: 'Pretendard',
     fontWeight: 'bold',
   },
 });

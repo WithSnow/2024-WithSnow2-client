@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
 import styles from '../../styles/map/MapStyles';
 import UnderBar from '../../component/common/underBar/UnderBar';
 import MyPageComponent from '../../component/mypage/MyPageComponent';
-import {useFocusEffect} from '@react-navigation/native';
+import { useFocusEffect } from '@react-navigation/native';
 
-export default function MyPageScreen({navigation, route}) {
-  const {activeTab: initialActiveTab = '마이페이지'} = route.params || {};
+export default function MyPageScreen({ navigation, route }) {
+  const { activeTab: initialActiveTab = '마이페이지' } = route.params || {};
   const [activeTab, setActiveTab] = useState(initialActiveTab);
 
   useFocusEffect(
@@ -21,7 +21,7 @@ export default function MyPageScreen({navigation, route}) {
 
   return (
     <View style={styles.container}>
-      <MyPageComponent />
+      <MyPageComponent username={'베리어프롬'} />
 
       <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />
     </View>
