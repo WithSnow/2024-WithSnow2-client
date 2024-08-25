@@ -31,7 +31,7 @@ export default function MapScreen({navigation, route}) {
         p => p.name === route.params.selectedPlace.name,
       );
       if (selectedPlace) {
-        setSelectedPlaceId(selectedPlace.id);
+        setSelectedPlace(selectedPlace);
       }
     }
   }, [route.params?.selectedPlace]);
