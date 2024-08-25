@@ -96,6 +96,7 @@ export default StyleSheet.create({
     fontWeight: '400',
     letterSpacing: 1,
     color: '#3B3838',
+    // marginTop: 2,
   },
 
   deleteIcon: {

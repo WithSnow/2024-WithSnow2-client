@@ -1,7 +1,7 @@
-export const findPlace = async name => {
+const findPlace = async name => {
   try {
     const response = await fetch(
-      `http://43.202.227.20:8080/search/name?${name}`,
+      `http://43.202.227.20:8080/maps/search/name?name=${name}`,
       {
         method: 'GET',
         headers: {
@@ -15,7 +15,10 @@ export const findPlace = async name => {
     }
 
     const responseData = await response.json();
-    return responseData.result;
+    console.log('API Response:', responseData); // API 응답을 확인
+
+    // API 응답이 배열이라면 그 자체를 반환
+    return responseData;
   } catch (error) {
     console.error('Error findPlace', error);
     return null;
