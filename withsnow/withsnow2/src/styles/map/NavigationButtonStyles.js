@@ -13,7 +13,7 @@ export default StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
   },
-  // 기본 안전한 길 버튼 스타일
+  // 버튼 기본 스타일
   safeButton: {
     marginLeft: 10,
     width: 180,
@@ -26,7 +26,6 @@ export default StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
   },
-  // 기본 더 빠른 길 버튼 스타일
   fastButton: {
     marginHorizontal: 10,
     width: 180,
@@ -39,34 +38,28 @@ export default StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
   },
-  // 활성화된 안전한 길 버튼 스타일
+  // 활성화된 버튼 스타일
   activeSafeButton: {
     backgroundColor: '#F9A596',
   },
-  // 활성화된 더 빠른 길 버튼 스타일
   activeFastButton: {
     backgroundColor: '#F9A596',
   },
-
-  // 기본 안전한 길 텍스트 스타일
+  // 텍스트 스타일
   safeText: {
     color: 'black',
     fontWeight: '400',
   },
-  // 기본 더 빠른 길 텍스트 스타일
   fastText: {
     color: 'black',
-
     fontWeight: '400',
   },
-  // 활성화된 안전한 길 텍스트 스타일
   activeSafeText: {
-    color: 'white', // 활성화된 상태의 텍스트 색상
+    color: 'white',
     fontWeight: '600',
   },
-  // 활성화된 더 빠른 길 텍스트 스타일
   activeFastText: {
-    color: 'white', // 활성화된 상태의 텍스트 색상
+    color: 'white',
     fontWeight: '600',
   },
   plusInfo: {
@@ -102,5 +95,19 @@ export default StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     marginBottom: 6,
+  },
+
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
 });

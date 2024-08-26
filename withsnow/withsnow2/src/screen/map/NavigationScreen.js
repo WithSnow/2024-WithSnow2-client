@@ -10,6 +10,7 @@ import NavigationButton from '../../component/map/navigationBar/NavigationButton
 export default function NavigationScreen({navigation, route}) {
   const {activeTab: initialActiveTab = '탐색'} = route.params || {};
   const [activeTab, setActiveTab] = useState(initialActiveTab);
+  const [activeButton, setActiveButton] = useState(null);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -23,10 +24,20 @@ export default function NavigationScreen({navigation, route}) {
 
   return (
     <View style={styles.container}>
-      <NavigationHeader navigation={navigation} route={route} />
+      <NavigationHeader
+        navigation={navigation}
+        route={route}
+        activeButton={activeButton}
+        setActiveButton={setActiveButton}
+      />
       <MapComponent />
 
-      <NavigationButton />
+      <NavigationButton
+        navigation={navigation}
+        route={route}
+        activeButton={activeButton}
+        setActiveButton={setActiveButton}
+      />
     </View>
   );
 }

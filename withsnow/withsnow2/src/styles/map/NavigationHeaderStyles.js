@@ -46,55 +46,46 @@ export default StyleSheet.create({
   },
   lowerContainer: {
     flexDirection: 'row',
-    // justifyContent: 'center',
     left: '50%',
     alignItems: 'center',
   },
-  walkButton: {
+
+  normalButton: {
     marginTop: 10,
     flexDirection: 'row',
     marginRight: 20,
-    backgroundColor: '#F9A596',
     borderRadius: 20,
     paddingVertical: 6.5,
     paddingHorizontal: 20,
     textAlign: 'center',
-  },
-  wheelchairIcon: {
-    color: 'white',
-    fontSize: 20,
-    marginRight: 5,
-    marginTop: 3,
-  },
-  walkText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '400',
-    letterSpacing: 1,
-    lineHeight: 24,
-  },
-  busButton: {
-    marginTop: 10,
-    flexDirection: 'row',
-    marginRight: 20,
     borderColor: '#F9A596',
     borderWidth: 1,
-    borderRadius: 20,
-    paddingVertical: 6.5,
-    paddingHorizontal: 20,
-    textAlign: 'center',
+    backgroundColor: '#FFFFFF',
   },
-  busIcon: {
+
+  normalIcon: {
     color: '#F9A596',
     fontSize: 20,
     marginRight: 5,
     marginTop: 3,
   },
-  busText: {
+
+  normalText: {
     color: '#F9A596',
     fontSize: 16,
     fontWeight: '400',
     letterSpacing: 1,
     lineHeight: 24,
+  },
+  // 활성화된 텍스트 스타일
+  activeButton: {
+    backgroundColor: '#F9A596',
+    borderColor: '#F9A596',
+  },
+  activeText: {
+    color: 'white',
+  },
+  activeIcon: {
+    color: 'white',
   },
 });
