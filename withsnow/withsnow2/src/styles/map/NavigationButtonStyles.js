@@ -12,6 +12,7 @@ export default StyleSheet.create({
   walkContainer: {
     width: '100%',
     flexDirection: 'row',
+    marginBottom: 25,
   },
   // 버튼 기본 스타일
   safeButton: {
@@ -20,6 +21,8 @@ export default StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 10,
+    paddingBottom: 13,
+    paddingLeft: 13,
     shadowColor: 'rgba(0, 0, 0, 0.25)',
     shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.2,
@@ -32,6 +35,8 @@ export default StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 10,
+    paddingBottom: 13,
+    paddingLeft: 13,
     shadowColor: 'rgba(0, 0, 0, 0.25)',
     shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.2,
@@ -77,10 +82,10 @@ export default StyleSheet.create({
     fontWeight: '500',
   },
   startButton: {
+    position: 'absolute',
     width: '100%',
     height: 70,
-    marginTop: -30,
-    bottom: -50,
+    bottom: -60,
     backgroundColor: '#F9A596',
     justifyContent: 'center',
     alignItems: 'center',
@@ -92,9 +97,9 @@ export default StyleSheet.create({
     color: 'white',
     letterSpacing: 1,
     fontWeight: '600',
-    alignItems: 'center',
     textAlign: 'center',
     marginBottom: 6,
+    bottom: '10%',
   },
 
   modalContainer: {

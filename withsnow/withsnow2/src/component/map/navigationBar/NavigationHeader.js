@@ -34,6 +34,8 @@ const NavigationHeader = ({
   route,
   activeButton,
   setActiveButton,
+  setEndDestination,
+  setActiveBus,
 }) => {
   const {startPlace, endPlace} = route.params || {};
   const [start, setStart] = useState(startPlace || '');
@@ -43,6 +45,19 @@ const NavigationHeader = ({
     if (startPlace) setStart(startPlace);
     if (endPlace) setEnd(endPlace);
   }, [startPlace, endPlace]);
+
+  useEffect(() => {
+    setEndDestination(end);
+  }, [end, setEndDestination]);
+
+  const handleButtonPress = buttonType => {
+    setActiveButton(buttonType);
+    if (buttonType === 'bus') {
+      setActiveBus(true);
+    } else {
+      setActiveBus(false);
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -72,7 +87,7 @@ const NavigationHeader = ({
           text="도보"
           buttonType="walk"
           activeButton={activeButton}
-          onPress={setActiveButton}
+          onPress={handleButtonPress}
         />
 
         {/* 대중교통 버튼 */}
@@ -81,7 +96,7 @@ const NavigationHeader = ({
           text="대중교통"
           buttonType="bus"
           activeButton={activeButton}
-          onPress={setActiveButton}
+          onPress={handleButtonPress}
         />
       </View>
     </View>
