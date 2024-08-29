@@ -17,6 +17,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import findPlace from '../../../api/search/findPlace';
 import getSearchHistory from '../../../api/search/getSearchHistory';
 import deleteSearchHistory from '../../../api/search/deleteSearchHistory';
+import getPlaceDetail from '../../../api/placeDetail/getPlaceDetail';
 
 export default function SearchScreen({navigation}) {
   const [data, setData] = useState([]);
@@ -24,21 +25,29 @@ export default function SearchScreen({navigation}) {
   const [recentSearches, setRecentSearches] = useState([]);
 
   // 장소 선택 -> map 으로 이동
-  const selectLocation = location => {
-    setRecentSearches(prevRecentSearches => [
-      location.name,
-      ...prevRecentSearches.filter(item => item !== location.name),
-    ]);
-    navigation.navigate('탐색', {selectedPlace: location});
+  const selectLocation = async location => {
+    try {
+      // API 요청으로 장소 상세 정보 가져오기
+      const placeDetail = await getPlaceDetail(location.name);
+
+      if (placeDetail) {
+        // 가져온 상세 정보와 함께 탐색 화면으로 이동
+        navigation.navigate('탐색', {selectedPlace: placeDetail});
+      } else {
+        console.error('Failed to fetch place details');
+      }
+    } catch (error) {
+      console.error('Error selecting location:', error);
+    }
   };
 
   // 아이콘 누르면 뒤로가기
   const handleBackPress = () => {
     if (searchText.trim()) {
-      setRecentSearches(prevRecentSearches => [
-        searchText,
-        ...prevRecentSearches.filter(item => item !== searchText),
-      ]);
+      // setRecentSearches(prevRecentSearches => [
+      //   searchText,
+      //   ...prevRecentSearches.filter(item => item !== searchText),
+      // ]);
     }
 
     setSearchText('');
@@ -73,6 +82,10 @@ export default function SearchScreen({navigation}) {
           // 결과에서 name만 추출하여 새로운 배열 생성
           const names = result.map(item => item.name);
           setData(names);
+          setRecentSearches(prevRecentSearches => [
+            text,
+            ...prevRecentSearches.filter(item => item !== text),
+          ]);
         })
         .catch(error => {
           console.error(error);

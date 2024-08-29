@@ -26,8 +26,10 @@ const mapFeature = features => {
     .map(key => featureMapping[key]);
 };
 
-const PlaceDetail = ({place, setSelectedPlace, toggleFavorite}) => {
-  if (!place) return null;
+const PlaceDetail = ({route}) => {
+  const {selectedPlace} = route.params;
+
+  if (!selectedPlace) return null;
 
   const translateY = useSharedValue(0);
 
@@ -57,13 +59,16 @@ const PlaceDetail = ({place, setSelectedPlace, toggleFavorite}) => {
     };
   });
 
-  const setFeatures = mapFeature(place.features);
+  const setFeatures = mapFeature(selectedPlace.features);
 
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
       <Animated.View style={[styles.container, animatedStyle]}>
         <View style={styles.handle} />
-        <PlaceDescription place={place} toggleFavorite={toggleFavorite} />
+        <PlaceDescription
+          place={selectedPlace}
+          toggleFavorite={toggleFavorite}
+        />
         <View style={styles.actionContainer}>
           <ActionButton
             label="출발지"
