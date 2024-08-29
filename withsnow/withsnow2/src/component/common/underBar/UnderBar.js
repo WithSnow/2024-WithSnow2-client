@@ -43,7 +43,7 @@ export default function UnderBar({activeTab, setActiveTab}) {
         activeIcon="call"
         text="복지사 호출"
         active={activeTab === '복지사 호출'}
-        onPress={() => handleTabPress('복지사 호출')}
+        onPress={() => handleTabPress('복지사 장소 전달')}
       />
       <UnderBarTab
         icon="person-outline"

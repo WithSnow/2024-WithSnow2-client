@@ -13,6 +13,7 @@ import WelfareMessage from './src/component/welfare/WelfareMessage';
 import MyPageDetailScreen from './src/screen/mypage/MyPageDetailScreen';
 import {PlacesProvider} from './src/context/PlacesContext'; // Context 파일 import
 import NavigationScreen from './src/screen/map/NavigationScreen';
+import WelfarePlaceScreen from './src/screen/welfare/WelfarePlaceScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,10 @@ function App() {
         <Stack.Navigator initialRouteName="탐색">
           <Stack.Screen name="탐색" component={MapScreen} />
           <Stack.Screen name="즐겨찾기" component={FavoriteListScreen} />
+          <Stack.Screen
+            name="복지사 장소 전달"
+            component={WelfarePlaceScreen}
+          />
           <Stack.Screen name="복지사 호출" component={WelfareScreen} />
           <Stack.Screen name="복지사 매칭" component={WelfareMessage} />
           <Stack.Screen name="복지사 배정" component={MatchWelfare} />

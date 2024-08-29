@@ -24,6 +24,9 @@ export default StyleSheet.create({
     zIndex: 10,
     alignItems: 'center',
   },
+  placeListContainer: {
+    marginBottom: 50,
+  },
   buttonText: {
     fontSize: 18,
     color: 'blue',
