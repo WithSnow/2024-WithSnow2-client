@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {SafeAreaView, View, ScrollView} from 'react-native';
 import MapComponent from '../../component/map/MapComponent';
 import SearchBar from '../../component/common/searchBar/SearchBar';
@@ -18,21 +18,21 @@ export default function MapScreen({navigation, route}) {
 
   // 장소 선택
   const handlePlaceSelect = place => {
-    // 장소의 이름으로 매칭 -> 선택되면 ID 저장
     const selected = places.find(p => p.name === place.name);
     if (selected) {
       setSelectedPlace(selected);
+    } else {
+      Alert.alert('Error', '선택된 장소를 찾을 수 없습니다.');
     }
   };
 
   useEffect(() => {
     if (route.params?.selectedPlace) {
-      const selectedPlace = places.find(
-        p => p.name === route.params.selectedPlace.name,
+      console.log(
+        'Received selectedPlace in MapScreen:',
+        route.params.selectedPlace,
       );
-      if (selectedPlace) {
-        setSelectedPlace(selectedPlace);
-      }
+      setSelectedPlace(route.params.selectedPlace);
     }
   }, [route.params?.selectedPlace]);
 
@@ -44,9 +44,11 @@ export default function MapScreen({navigation, route}) {
     }
   };
 
-  const filteredPlaces = selectedCategory
-    ? places.filter(place => place.category === selectedCategory)
-    : [];
+  const filteredPlaces = useMemo(() => {
+    return selectedCategory
+      ? places.filter(place => place.category === selectedCategory)
+      : [];
+  }, [selectedCategory, places]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -60,8 +62,6 @@ export default function MapScreen({navigation, route}) {
       <View style={styles.searchBarContainer}>
         <SearchBar />
       </View>
-
-      <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <Category
         selectedCategory={selectedCategory}

@@ -18,7 +18,7 @@ export default function SearchBar() {
         placeholder="베프에서 핫플레이스를 검색해보세요."
         value={searchQuery}
         onChangeText={setSearchQuery}
-        onFocus={() => navigation.navigate('Search')} // 포커스될 때 네비게이션 이동
+        onFocus={() => navigation.navigate('장소 검색')} // 포커스될 때 네비게이션 이동
       />
     </View>
   );

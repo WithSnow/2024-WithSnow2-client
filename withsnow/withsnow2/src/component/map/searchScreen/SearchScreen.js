@@ -27,11 +27,10 @@ export default function SearchScreen({navigation}) {
   // 장소 선택 -> map 으로 이동
   const selectLocation = async location => {
     try {
-      // API 요청으로 장소 상세 정보 가져오기
       const placeDetail = await getPlaceDetail(location.name);
+      console.log('Fetch data: ', placeDetail);
 
       if (placeDetail) {
-        // 가져온 상세 정보와 함께 탐색 화면으로 이동
         navigation.navigate('탐색', {selectedPlace: placeDetail});
       } else {
         console.error('Failed to fetch place details');
@@ -166,7 +165,7 @@ export default function SearchScreen({navigation}) {
       <FlatList
         data={favoritePlaces}
         horizontal
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => (
           <TouchableOpacity onPress={() => selectLocation(item)}>
             <View style={styles.favoriteContainer}>

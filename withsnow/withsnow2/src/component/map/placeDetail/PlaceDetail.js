@@ -26,10 +26,14 @@ const mapFeature = features => {
     .map(key => featureMapping[key]);
 };
 
-const PlaceDetail = ({route}) => {
-  const {selectedPlace} = route.params;
+const PlaceDetail = ({route, setSelectedPlace, threshold = 100}) => {
+  const {selectedPlace} = route.params || {};
+  console.log('Selected Place:', selectedPlace);
 
-  if (!selectedPlace) return null;
+  if (!selectedPlace) {
+    console.error('No selected place found');
+    return null; // 데이터를 받지 못하면 팝업을 띄우지 않음
+  }
 
   const translateY = useSharedValue(0);
 
@@ -38,7 +42,7 @@ const PlaceDetail = ({route}) => {
       translateY.value = event.translationY;
     },
     onEnd: event => {
-      if (event.translationY > 100) {
+      if (event.translationY > threshold) {
         runOnJS(setSelectedPlace)(null);
       } else {
         translateY.value = withSpring(0, {
@@ -59,7 +63,9 @@ const PlaceDetail = ({route}) => {
     };
   });
 
-  const setFeatures = mapFeature(selectedPlace.features);
+  const setFeatures = selectedPlace.features
+    ? mapFeature(selectedPlace.features)
+    : [];
 
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
@@ -67,7 +73,7 @@ const PlaceDetail = ({route}) => {
         <View style={styles.handle} />
         <PlaceDescription
           place={selectedPlace}
-          toggleFavorite={toggleFavorite}
+          // toggleFavorite={toggleFavorite}
         />
         <View style={styles.actionContainer}>
           <ActionButton

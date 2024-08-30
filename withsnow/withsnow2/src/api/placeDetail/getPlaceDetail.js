@@ -17,6 +17,10 @@ const getPlaceDetail = async name => {
     const responseData = await response.json();
     console.log('API Response:', responseData); // API 응답을 확인
 
+    if (Array.isArray(responseData)) {
+      return responseData[0]; // 배열일 경우 첫 번째 항목 반환
+    }
+
     return responseData;
   } catch (error) {
     console.error('Error getPlaceDetail', error);
