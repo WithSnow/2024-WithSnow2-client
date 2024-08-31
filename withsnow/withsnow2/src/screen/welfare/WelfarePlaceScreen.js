@@ -5,6 +5,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import NavigationHeader from '../../component/map/navigationBar/NavigationHeader';
 import MapComponent from '../../component/map/MapComponent';
 import WelfarePlace from '../../component/welfare/WelfarePlace';
+import WelfareNavigationHeader from '../../component/welfare/WelfareNavigationHeader';
 
 export default function WelfarePlaceScreen({navigation, route}) {
   const {activeTab: initialActiveTab = '복지사 호출'} = route.params || {};
@@ -26,7 +27,7 @@ export default function WelfarePlaceScreen({navigation, route}) {
 
   return (
     <View style={styles.container}>
-      <NavigationHeader
+      <WelfareNavigationHeader
         navigation={navigation}
         route={route}
         activeButton={activeButton}
