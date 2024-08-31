@@ -78,7 +78,7 @@ export default function MapScreen({navigation, route}) {
 
       {selectedPlace && (
         <PlaceDetail
-          place={selectedPlace}
+          selectedPlace={selectedPlace}
           setSelectedPlace={setSelectedPlace}
           toggleFavorite={() => {
             // Implement toggle favorite logic

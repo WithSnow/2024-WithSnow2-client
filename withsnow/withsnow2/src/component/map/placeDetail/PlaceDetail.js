@@ -15,19 +15,18 @@ import styles from '../../../styles/common/PlaceDetailStyles';
 
 const mapFeature = features => {
   const featureMapping = {
-    elevator: '엘레베이터 있음',
+    elevator: '엘리베이터 있음',
     step_free: '계단 없음',
     wheelchair_accessible: '휠체어 이용 가능 통로 있음',
     ramp: '경사로 있음',
   };
 
   return Object.keys(features)
-    .filter(key => features[key])
-    .map(key => featureMapping[key]);
+    .filter(key => features[key]) // true 값만 필터링
+    .map(key => featureMapping[key]); // 한국어로 매핑
 };
 
-const PlaceDetail = ({route, setSelectedPlace, threshold = 100}) => {
-  const {selectedPlace} = route.params || {};
+const PlaceDetail = ({selectedPlace, setSelectedPlace, threshold = 100}) => {
   console.log('Selected Place:', selectedPlace);
 
   if (!selectedPlace) {
@@ -63,18 +62,22 @@ const PlaceDetail = ({route, setSelectedPlace, threshold = 100}) => {
     };
   });
 
-  const setFeatures = selectedPlace.features
-    ? mapFeature(selectedPlace.features)
+  const setFeatures = selectedPlace
+    ? mapFeature({
+        elevator: selectedPlace.elevator,
+        step_free: selectedPlace.step_free,
+        wheelchair_accessible: selectedPlace.wheelchair_accessible,
+        ramp: selectedPlace.ramp,
+      })
     : [];
+
+  console.log('Mapped Features:', setFeatures); // 로그로 확인
 
   return (
     <PanGestureHandler onGestureEvent={gestureHandler}>
       <Animated.View style={[styles.container, animatedStyle]}>
         <View style={styles.handle} />
-        <PlaceDescription
-          place={selectedPlace}
-          // toggleFavorite={toggleFavorite}
-        />
+        <PlaceDescription place={selectedPlace} />
         <View style={styles.actionContainer}>
           <ActionButton
             label="출발지"
