@@ -70,7 +70,7 @@ export default function BusNavigation({setSelectedCard, setActiveBus}) {
   const startInfo = {
     number: '6',
     station: '경의\n중앙',
-    startName: '효창공원앞역',
+    startName: '효창공원앞역, 이봉창기념관',
     endName: '숙명여대 후문',
   };
 
