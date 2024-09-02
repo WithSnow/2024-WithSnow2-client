@@ -26,19 +26,7 @@ export default StyleSheet.create({
   placeListContainer: {
     marginBottom: 50,
   },
-  buttonText: {
-    fontSize: 18,
-    color: 'blue',
-  },
-  buttonOverlay: {
-    position: 'absolute',
-    top: '50%',
-    left: 10,
-    transform: [{translateY: -50}],
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
-    padding: 10,
-    borderRadius: 5,
-  },
+
   placeCardContainer: {
     position: 'absolute',
     bottom: 100,
