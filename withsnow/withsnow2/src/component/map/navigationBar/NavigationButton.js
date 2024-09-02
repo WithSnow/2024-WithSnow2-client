@@ -61,7 +61,8 @@ export default function NavigationButton({
     setShowWalkCard(false);
   };
 
-  const isDestination = endDestination === '숙명여대 후문 ';
+  const isDestination =
+    endDestination === '숙명여대 후문 ' && activeButton === 'walk';
 
   return (
     <View style={styles.container}>

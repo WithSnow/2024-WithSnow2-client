@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import styles from '../../styles/map/MapStyles';
-import MapView from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 
 export default function MapComponent({navigation, coordinates}) {
   // 지도 인스턴스에 접근(애니메이션 제어 용도)
@@ -32,8 +32,13 @@ export default function MapComponent({navigation, coordinates}) {
           longitude: 126.964759,
           latitudeDelta: 0.1032,
           longitudeDelta: 0.0521,
-        }}
-      />
+        }}>
+        {/* {coordinates && (
+          <Marker coordinate={coordinates}>
+            <View style={{backgroundColor: 'red', padding: 10}}></View>
+          </Marker>
+        )} */}
+      </MapView>
 
       {/* <View style={styles.mapPlaceholder} /> */}
     </View>

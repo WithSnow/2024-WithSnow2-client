@@ -87,7 +87,7 @@ export default function BusNavigation({setSelectedCard, setActiveBus}) {
             walkText: '도보',
             startInfo: startInfo,
             buses: safeRouteBuses,
-            plusInfo: '경의중앙선 대합실 앞',
+            plusInfo: '6호선 경의중앙선 대합실 앞',
           });
           setActiveBus(false);
         }}>
@@ -99,7 +99,7 @@ export default function BusNavigation({setSelectedCard, setActiveBus}) {
           walkText="도보"
           startInfo={startInfo}
           buses={safeRouteBuses}
-          plusInfo="경의중앙선 대합실 앞"
+          plusInfo="6호선 경의중앙선 대합실 앞"
         />
       </TouchableOpacity>
 
