@@ -32,9 +32,19 @@ export default StyleSheet.create({
     marginVertical: 5,
     letterSpacing: 1,
   },
-  rating: {
-    fontSize: 16,
-    color: '#ffcc00',
+  starContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  ratingText: {
+    marginRight: 5,
+    fontSize: 12,
+    fontWeight: '400',
+    color: '#696969',
   },
   phone: {
     fontSize: 12,

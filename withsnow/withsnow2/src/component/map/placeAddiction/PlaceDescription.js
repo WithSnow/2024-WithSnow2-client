@@ -5,7 +5,43 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function PlaceDescription({place}) {
-  console.log('Place:', place);
+  const renderStars = rating => {
+    const fullStar = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+    const emptyStar = 5 - fullStar - halfStar;
+    return (
+      <View style={styles.starContainer}>
+        {Array(fullStar)
+          .fill()
+          .map((_, index) => (
+            <FontAwesome
+              key={`full-${index}`}
+              name="star"
+              size={14}
+              color="#FFD233"
+            />
+          ))}
+        {halfStar === 1 && (
+          <FontAwesome
+            key="half-star"
+            name="star-half-full"
+            size={14}
+            color="#FFD233"
+          />
+        )}
+        {Array(emptyStar)
+          .fill()
+          .map((_, index) => (
+            <FontAwesome
+              key={`empty-${index}`}
+              name="star-o"
+              size={14}
+              color="#ADB0B0"
+            />
+          ))}
+      </View>
+    );
+  };
   return (
     <View style={styles.detailsContainer}>
       <Image
@@ -31,9 +67,10 @@ export default function PlaceDescription({place}) {
 
         <Text style={styles.address}>{place.address}</Text>
 
-        <Text style={styles.rating}>
-          {place.rating} <FontAwesome name="star" size={16} color="#f4c430" />
-        </Text>
+        <View style={styles.ratingContainer}>
+          <Text style={styles.ratingText}>{place.rating}</Text>
+          {renderStars(place.rating)}
+        </View>
 
         <Text style={styles.phone_number}>
           <Icon name="phone" size={16} color="#19BAFF" /> {place.phone_number}
