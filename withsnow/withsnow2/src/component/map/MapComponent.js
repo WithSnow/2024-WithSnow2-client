@@ -19,7 +19,7 @@ export default function MapComponent({navigation, onPlaceSelect}) {
 
   return (
     <View style={styles.container}>
-      {/* <MapView
+      <MapView
         style={styles.mapPlaceholder}
         initialRegion={{
           latitude: 37.546603,
@@ -27,9 +27,9 @@ export default function MapComponent({navigation, onPlaceSelect}) {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
-      /> */}
+      />
 
-      <View style={styles.mapPlaceholder} />
+      {/* <View style={styles.mapPlaceholder} /> */}
       <TouchableOpacity
         onPress={() => onPlaceSelect(mockPlace)}
         style={styles.buttonOverlay}>
