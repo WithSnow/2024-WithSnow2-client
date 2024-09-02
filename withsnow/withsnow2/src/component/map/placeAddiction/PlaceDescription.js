@@ -9,7 +9,7 @@ export default function PlaceDescription({place}) {
   return (
     <View style={styles.detailsContainer}>
       <Image
-        source={require('../../../../assets/images/geongbok.png')}
+        source={require('../../../../assets/images/station.png')}
         style={styles.image}
         onError={error => console.log(error.nativeEvent.error)}
       />
