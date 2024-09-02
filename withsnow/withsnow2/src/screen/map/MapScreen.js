@@ -14,6 +14,7 @@ export default function MapScreen({navigation, route}) {
   const [activeTab, setActiveTab] = useState(initialActiveTab);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedPlace, setSelectedPlace] = useState(null);
+  const [placeDetailVisible, setPlaceDetailVisible] = useState(false);
   const {places} = usePlacesContext();
 
   // 장소 선택
@@ -21,6 +22,7 @@ export default function MapScreen({navigation, route}) {
     const selected = places.find(p => p.name === place.name);
     if (selected) {
       setSelectedPlace(selected);
+      setPlaceDetailVisible(true);
     } else {
       Alert.alert('Error', '선택된 장소를 찾을 수 없습니다.');
     }
@@ -33,6 +35,7 @@ export default function MapScreen({navigation, route}) {
         route.params.selectedPlace,
       );
       setSelectedPlace(route.params.selectedPlace);
+      setPlaceDetailVisible(true);
     }
   }, [route.params?.selectedPlace]);
 
@@ -50,13 +53,16 @@ export default function MapScreen({navigation, route}) {
       : [];
   }, [selectedCategory, places]);
 
+  const placeCoordinate =
+    placeDetailVisible && selectedPlace
+      ? {
+          longitude: selectedPlace.longitude,
+          latitude: selectedPlace.latitude,
+        }
+      : null;
   return (
     <SafeAreaView style={styles.container}>
-      <MapComponent
-        navigation={navigation}
-        onPlaceSelect={handlePlaceSelect}
-        places={filteredPlaces}
-      />
+      <MapComponent navigation={navigation} coordinates={placeCoordinate} />
 
       <View style={styles.searchBarContainer}>
         <SearchBar />
@@ -79,7 +85,10 @@ export default function MapScreen({navigation, route}) {
         <PlaceDetail
           navigation={navigation}
           selectedPlace={selectedPlace}
-          setSelectedPlace={setSelectedPlace}
+          setSelectedPlace={place => {
+            setSelectedPlace(place);
+            setPlaceDetailVisible(!!place);
+          }}
           toggleFavorite={() => {
             // Implement toggle favorite logic
           }}
