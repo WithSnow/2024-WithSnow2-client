@@ -1,12 +1,14 @@
 import React from 'react';
 import {FlatList, Text, View, StyleSheet} from 'react-native';
-import PlaceDescription from '../map/placeAddiction/PlaceDescription';
 import styles from '../../styles/map/FavoriteListStyles';
-import CategoryCard from '../common/category/CategoryCard';
 import PlaceCard from '../map/placeAddiction/PlaceCard';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function FavoriteList({places = [], toggleFavorite}) {
+export default function FavoriteList({
+  navigation,
+  places = [],
+  toggleFavorite,
+}) {
   const favoritePlaces = places.filter(place => place.isFavorite);
 
   return (
@@ -25,6 +27,7 @@ export default function FavoriteList({places = [], toggleFavorite}) {
         renderItem={({item}) => (
           <View style={styles.placeContainer}>
             <PlaceCard
+              navigation={navigation}
               place={item}
               toggleFavorite={() => toggleFavorite(item.id)}
             />

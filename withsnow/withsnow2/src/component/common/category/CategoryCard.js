@@ -4,9 +4,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from '../../../styles/map/CategoryCardStyles';
 import {usePlacesContext} from '../../../context/PlacesContext';
 import ActionButton from '../../map/placeAddiction/ActionButton';
+import {useNavigation} from '@react-navigation/native';
 
 export default function CategoryCard({place, onPress}) {
   const {toggleFavorite} = usePlacesContext();
+  const navigation = useNavigation();
 
   return (
     <View style={styles.card} onPress={() => onPress(place)}>
@@ -35,14 +37,14 @@ export default function CategoryCard({place, onPress}) {
             label="출발지"
             isStart={true}
             onPress={() => {
-              /* 출발지 처리 로직 추가 */
+              navigation.navigate('내비게이션', {startPlace: place.name});
             }}
           />
           <ActionButton
             label="도착지"
             isStart={false}
             onPress={() => {
-              /* 도착지 처리 로직 추가 */
+              navigation.navigate('내비게이션', {endPlace: place.name});
             }}
           />
         </View>

@@ -6,7 +6,7 @@ import UnderBar from '../../component/common/underBar/UnderBar';
 import styles from '../../styles/map/MapStyles';
 import {usePlacesContext} from '../../context/PlacesContext';
 
-export default function FavoriteListScreen({route}) {
+export default function FavoriteListScreen({route, navigation}) {
   const {activeTab: initialActiveTab = '즐겨찾기'} = route.params || {};
   const [activeTab, setActiveTab] = useState(initialActiveTab);
   const {places, toggleFavorite} = usePlacesContext();
@@ -23,7 +23,11 @@ export default function FavoriteListScreen({route}) {
 
   return (
     <View style={styles.container}>
-      <FavoriteList places={places} toggleFavorite={toggleFavorite} />
+      <FavoriteList
+        navigation={navigation}
+        places={places}
+        toggleFavorite={toggleFavorite}
+      />
       <UnderBar activeTab={activeTab} setActiveTab={setActiveTab} />
     </View>
   );

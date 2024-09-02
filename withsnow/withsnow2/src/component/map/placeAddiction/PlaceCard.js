@@ -5,8 +5,9 @@ import {usePlacesContext} from '../../../context/PlacesContext';
 import styles from '../../../styles/map/PlaceCardStyles';
 import ActionButton from './ActionButton';
 
-export default function PlaceCard({place, onPress}) {
+export default function PlaceCard({navigation, place, onPress}) {
   const {toggleFavorite} = usePlacesContext();
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -34,14 +35,14 @@ export default function PlaceCard({place, onPress}) {
             label="출발지"
             isStart={true}
             onPress={() => {
-              /* 출발지 처리 로직 추가 */
+              navigation.navigate('내비게이션', {startPlace: place.name});
             }}
           />
           <ActionButton
             label="도착지"
             isStart={false}
             onPress={() => {
-              /* 도착지 처리 로직 추가 */
+              navigation.navigate('내비게이션', {endPlace: place.name});
             }}
           />
         </View>
