@@ -26,7 +26,12 @@ const mapFeature = features => {
     .map(key => featureMapping[key]); // 한국어로 매핑
 };
 
-const PlaceDetail = ({selectedPlace, setSelectedPlace, threshold = 100}) => {
+const PlaceDetail = ({
+  navigation,
+  selectedPlace,
+  setSelectedPlace,
+  threshold = 100,
+}) => {
   console.log('Selected Place:', selectedPlace);
 
   if (!selectedPlace) {
@@ -83,14 +88,16 @@ const PlaceDetail = ({selectedPlace, setSelectedPlace, threshold = 100}) => {
             label="출발지"
             isStart={true}
             onPress={() => {
-              navigation.navigate('내비게이션', {startPlace: place.name});
+              navigation.navigate('내비게이션', {
+                startPlace: selectedPlace.name,
+              });
             }}
           />
           <ActionButton
             label="도착지"
             isStart={false}
             onPress={() => {
-              navigation.navigate('내비게이션', {endPlace: place.name});
+              navigation.navigate('내비게이션', {endPlace: selectedPlace.name});
             }}
           />
         </View>
