@@ -56,9 +56,8 @@ export default function MapScreen({navigation, route}) {
         navigation={navigation}
         onPlaceSelect={handlePlaceSelect}
         places={filteredPlaces}
-        openFavoriteList={() => setFavoriteListVisible(true)}
-        openRecommendPlace={() => setRecommendPlaceVisible(true)}
       />
+
       <View style={styles.searchBarContainer}>
         <SearchBar />
       </View>
@@ -78,6 +77,7 @@ export default function MapScreen({navigation, route}) {
 
       {selectedPlace && (
         <PlaceDetail
+          navigation={navigation}
           selectedPlace={selectedPlace}
           setSelectedPlace={setSelectedPlace}
           toggleFavorite={() => {

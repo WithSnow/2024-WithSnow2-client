@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     margin: 10,
+    marginBottom: 50,
   },
   placeCard: {
     backgroundColor: 'white',
@@ -20,6 +21,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2.22,
     elevation: 3,
     flexShrink: 1,
+    marginBottom: -50,
   },
   imageContainer: {
     width: 120,

@@ -23,6 +23,9 @@ export default StyleSheet.create({
     width: '100%',
     alignItems: 'center',
   },
+  placeListContainer: {
+    marginBottom: 50,
+  },
   buttonText: {
     fontSize: 18,
     color: 'blue',

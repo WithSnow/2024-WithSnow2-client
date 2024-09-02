@@ -84,6 +84,7 @@ const PlaceDetail = ({selectedPlace, setSelectedPlace, threshold = 100}) => {
             isStart={true}
             onPress={() => {
               /* 출발지 처리 로직 추가 */
+              navigation.navigate('내비게이션', {startPlace: place.name});
             }}
           />
           <ActionButton
@@ -91,6 +92,7 @@ const PlaceDetail = ({selectedPlace, setSelectedPlace, threshold = 100}) => {
             isStart={false}
             onPress={() => {
               /* 도착지 처리 로직 추가 */
+              navigation.navigate('내비게이션', {endPlace: place.name});
             }}
           />
         </View>
