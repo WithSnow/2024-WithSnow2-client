@@ -21,7 +21,6 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 10,
     width: '100%',
-    zIndex: 10,
     alignItems: 'center',
   },
   placeListContainer: {

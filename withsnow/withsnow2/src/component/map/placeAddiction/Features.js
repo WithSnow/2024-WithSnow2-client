@@ -9,7 +9,9 @@ export default function Features({features}) {
     <View style={styles.featureContainer}>
       {features.map((feature, index) => (
         <View key={index} style={styles.feature}>
-          {iconMap[feature] || (
+          {iconMap[feature] ? (
+            iconMap[feature]
+          ) : (
             <Icon name="error-outline" size={20} color="#ADB0B0" />
           )}
           <Text style={styles.featureText}>{feature}</Text>
