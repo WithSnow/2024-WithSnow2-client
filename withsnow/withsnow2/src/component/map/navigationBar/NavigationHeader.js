@@ -4,6 +4,8 @@ import styles from '../../../styles/map/NavigationHeaderStyles';
 import Icon from 'react-native-vector-icons/Fontisto';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useFocusEffect} from '@react-navigation/native';
+import getCoordinates from '../../../api/map/getCoordinates';
 
 const NavigationButton = ({
   iconName,
@@ -36,10 +38,21 @@ const NavigationHeader = ({
   setActiveButton,
   setEndDestination,
   setActiveBus,
+  setStartCoord,
+  startCoord,
 }) => {
   const {startPlace, endPlace} = route.params || {};
   const [start, setStart] = useState(startPlace || '');
   const [end, setEnd] = useState(endPlace || '');
+
+  const handleButtonPress = buttonType => {
+    setActiveButton(buttonType);
+    if (buttonType === 'bus') {
+      setActiveBus(true);
+    } else {
+      setActiveBus(false);
+    }
+  };
 
   useEffect(() => {
     if (startPlace) setStart(startPlace);
@@ -50,14 +63,22 @@ const NavigationHeader = ({
     setEndDestination(end);
   }, [end, setEndDestination]);
 
-  const handleButtonPress = buttonType => {
-    setActiveButton(buttonType);
-    if (buttonType === 'bus') {
-      setActiveBus(true);
-    } else {
-      setActiveBus(false);
-    }
-  };
+  useFocusEffect(
+    React.useCallback(() => {
+      async function findCoordinates(name) {
+        try {
+          const result = await getCoordinates(name);
+          setStartCoord(result);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      if (start) {
+        findCoordinates(start);
+      }
+    }, [start, setStartCoord]),
+  );
 
   return (
     <View style={styles.container}>

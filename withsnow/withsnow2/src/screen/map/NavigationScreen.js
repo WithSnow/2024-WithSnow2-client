@@ -16,6 +16,7 @@ export default function NavigationScreen({navigation, route}) {
   const [endDestination, setEndDestination] = useState('');
   const [activeBus, setActiveBus] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [startCoord, setStartCoord] = useState(null);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -40,8 +41,10 @@ export default function NavigationScreen({navigation, route}) {
         setActiveButton={setActiveButton}
         setEndDestination={setEndDestination}
         setActiveBus={setActiveBus}
+        setStartCoord={setStartCoord}
+        startCoord={startCoord}
       />
-      <MapComponent />
+      <NavigationMapComponent startCoord={startCoord} />
 
       {activeBus ? (
         <BusNavigation

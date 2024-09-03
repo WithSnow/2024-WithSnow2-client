@@ -1,15 +1,19 @@
 import React, {useEffect, useRef} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
-import styles from '../../styles/map/MapStyles';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 
-export default function MapComponent({navigation, coordinates}) {
+export default function NavigationMapComponent({startCoord}) {
   // 지도 인스턴스에 접근(애니메이션 제어 용도)
   const mapRef = useRef(null);
 
+  const endCoord = {
+    latitude: 37.5665, // 예시 위도
+    longitude: 126.978, // 예시 경도
+  };
+
   // coordinate 변경시 지도를 해당 좌표로 이동
   useEffect(() => {
-    if (coordinates && mapRef.current) {
+    if (startCoord && mapRef.current) {
       mapRef.current.animateToRegion(
         {
           ...coordinates,
@@ -21,9 +25,10 @@ export default function MapComponent({navigation, coordinates}) {
         1000,
       );
     }
-  }, [coordinates]);
+  }, [startCoord]);
+
   return (
-    <View style={styles.container}>
+    <View style={{flex: 1}}>
       <MapView
         ref={mapRef}
         provider={PROVIDER_GOOGLE}
@@ -34,10 +39,9 @@ export default function MapComponent({navigation, coordinates}) {
           latitudeDelta: 0.1032,
           longitudeDelta: 0.0521,
         }}>
-        {coordinates && <Marker coordinate={coordinates} />}
+        {startCoord && <Marker coordinate={startCoord} />}
+        {startCoord && <Marker coordinate={endCoord} />}
       </MapView>
-
-      {/* <View style={styles.mapPlaceholder} /> */}
     </View>
   );
 }

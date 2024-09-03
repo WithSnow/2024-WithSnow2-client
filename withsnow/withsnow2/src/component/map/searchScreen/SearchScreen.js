@@ -152,6 +152,7 @@ export default function SearchScreen({navigation}) {
         <TextInput
           placeholder="베프에서 핫플레이스를 검색해보세요."
           value={searchText}
+          // onchange -> onsubmit시 setSearchText로 바꾸기
           onChangeText={setSearchText}
           onSubmitEditing={searchLocation}
           style={styles.searchBar}
