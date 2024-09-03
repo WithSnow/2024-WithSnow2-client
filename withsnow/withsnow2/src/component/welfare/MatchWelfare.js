@@ -24,7 +24,10 @@ export default function MatchWelfare({route}) {
       {assignedWelfare ? (
         <>
           <View style={styles.imageContainer}>
-            <Image source={assignedWelfare.img} style={styles.image} />
+            <Image
+              source={require('../../../assets/images/profile.png')}
+              style={styles.image}
+            />
             <View style={styles.divider} />
 
             <Text style={styles.welfareInfo}>

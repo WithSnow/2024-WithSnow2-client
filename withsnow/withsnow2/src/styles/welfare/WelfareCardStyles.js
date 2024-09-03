@@ -25,9 +25,17 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  image: {
+  imageContainer: {
     height: 60,
     width: 60,
+    backgroundColor: '#E2E4E9',
+    borderRadius: 999,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    color: 'white',
+    fontSize: 30,
   },
   name: {
     color: '#111111',

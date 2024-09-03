@@ -3,6 +3,7 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import styles from '../../styles/welfare/WelfareCardStyles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {WelfareContext} from '../../context/WelfareContext';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const WelfareCard = ({welfare}) => {
   const {welfareList, setWelfareList} = useContext(WelfareContext);
@@ -22,8 +23,10 @@ const WelfareCard = ({welfare}) => {
       <View style={styles.upperContainer}>
         {/* 복지사 프로필 이미지 */}
         <View style={styles.profileContainer}>
-          <Image source={welfare.img} style={styles.image} />
-
+          {/* <Image source={welfare.img} style={styles.image} /> */}
+          <View style={styles.imageContainer}>
+            <Ionicons name="person" style={styles.image} />
+          </View>
           {/* 복지사 이름 */}
           <Text style={styles.name}>{welfare.name} 복지사님</Text>
         </View>

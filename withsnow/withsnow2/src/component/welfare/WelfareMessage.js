@@ -64,7 +64,10 @@ export default function WelfareMessage({welfareList, onClose, navigation}) {
 
         <View style={styles.imageContainer}>
           {firstWelfare?.img && (
-            <Image source={firstWelfare.img} style={styles.image} />
+            <Image
+              source={require('../../../assets/images/profile.png')}
+              style={styles.image}
+            />
           )}
         </View>
 

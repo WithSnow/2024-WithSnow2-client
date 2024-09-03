@@ -45,7 +45,7 @@ export default function PlaceDescription({place}) {
   return (
     <View style={styles.detailsContainer}>
       <Image
-        source={require('../../../../assets/images/station.png')}
+        source={require('../../../../assets/images/station.jpg')}
         style={styles.image}
         onError={error => console.log(error.nativeEvent.error)}
       />
