@@ -4,7 +4,7 @@ import styles from '../../styles/map/NavigationScreenStyles';
 import UnderBar from '../../component/common/underBar/UnderBar';
 import {useFocusEffect} from '@react-navigation/native';
 import NavigationHeader from '../../component/map/navigationBar/NavigationHeader';
-import MapComponent from '../../component/map/MapComponent';
+import NavigationMapComponent from '../../component/map/navigationBar/NavigationMapComponent';
 import NavigationButton from '../../component/map/navigationBar/NavigationButton';
 import BusNavigation from '../../component/map/navigationBar/BusNavigation';
 import SelectedCard from '../../component/map/navigationBar/SelectedCard';

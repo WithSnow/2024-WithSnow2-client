@@ -18,11 +18,12 @@ const getCoordinates = async name => {
     const responseData = await response.json();
     console.log('API Response: ', responseData);
 
-    // 여기서 responseData가 올바른 구조인지 확인하고 필요하면 가공
-    if (responseData && responseData.latitude && responseData.longitude) {
+    // API 응답에서 latitude와 longitude 추출
+    if (responseData && responseData.origin) {
+      const {latitude, longitude} = responseData.origin;
       return {
-        latitude: responseData.latitude,
-        longitude: responseData.longitude,
+        latitude,
+        longitude,
       };
     } else {
       throw new Error('Invalid response structure');

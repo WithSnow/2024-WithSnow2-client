@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
-
+import styles from '../../../styles/map/MapStyles';
 export default function NavigationMapComponent({startCoord}) {
   // 지도 인스턴스에 접근(애니메이션 제어 용도)
   const mapRef = useRef(null);
