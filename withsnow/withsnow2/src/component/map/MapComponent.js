@@ -34,7 +34,7 @@ export default function MapComponent({navigation, coordinates}) {
           latitudeDelta: 0.1032,
           longitudeDelta: 0.0521,
         }}>
-        {coordinates && <Marker coordinate={coordinates} />}
+        {/* {coordinates && <Marker coordinate={coordinates} />} */}
       </MapView>
 
       {/* <View style={styles.mapPlaceholder} /> */}

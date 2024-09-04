@@ -16,7 +16,7 @@ export default function NavigationMapComponent({startCoord}) {
     if (startCoord && mapRef.current) {
       mapRef.current.animateToRegion(
         {
-          ...coordinates,
+          ...startCoord,
           // 줌 레벨
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
@@ -39,8 +39,8 @@ export default function NavigationMapComponent({startCoord}) {
           latitudeDelta: 0.1032,
           longitudeDelta: 0.0521,
         }}>
-        {startCoord && <Marker coordinate={startCoord} />}
-        {startCoord && <Marker coordinate={endCoord} />}
+        {/* {startCoord && <Marker coordinate={startCoord} />}
+        {startCoord && <Marker coordinate={endCoord} />} */}
       </MapView>
     </View>
   );
