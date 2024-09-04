@@ -17,6 +17,7 @@ import {useFocusEffect} from '@react-navigation/native';
 import findPlace from '../../../api/search/findPlace';
 import getSearchHistory from '../../../api/search/getSearchHistory';
 import deleteSearchHistory from '../../../api/search/deleteSearchHistory';
+import deleteSearchOne from '../../../api/search/deleteSearchOne'; // 단건 삭제 함수 import
 import getPlaceDetail from '../../../api/placeDetail/getPlaceDetail';
 
 export default function SearchScreen({navigation}) {
@@ -42,13 +43,6 @@ export default function SearchScreen({navigation}) {
 
   // 아이콘 누르면 뒤로가기
   const handleBackPress = () => {
-    if (searchText.trim()) {
-      // setRecentSearches(prevRecentSearches => [
-      //   searchText,
-      //   ...prevRecentSearches.filter(item => item !== searchText),
-      // ]);
-    }
-
     setSearchText('');
   };
 
@@ -58,15 +52,22 @@ export default function SearchScreen({navigation}) {
     if (result) {
       setRecentSearches([]);
     } else {
-      console.error('Failed to DeleteSearchHistory');
+      console.error('Failed to delete search history');
     }
   };
 
   // 검색 기록 단일 삭제
-  const deleteRecentResearch = itemToDelete => {
-    setRecentSearches(prevRecentSearches =>
-      prevRecentSearches.filter(item => item !== itemToDelete),
-    );
+  const deleteRecentResearch = async searchId => {
+    const result = await deleteSearchOne(searchId); // placeId 전달하여 삭제 API 호출
+
+    if (result) {
+      setRecentSearches(
+        prevRecentSearches =>
+          prevRecentSearches.filter(item => item.searchId !== searchId), // 성공적으로 삭제된 항목 제거
+      );
+    } else {
+      console.error('Failed to delete the search history item');
+    }
   };
 
   // 즐겨찾기 장소 필터링
@@ -127,9 +128,11 @@ export default function SearchScreen({navigation}) {
 
         if (Array.isArray(result)) {
           // searchTerm만 추출
-          const searchTerms = result.map(item => item.searchTerm);
+          const searchTerms = result.map(item => ({
+            searchTerm: item.searchTerm,
+            searchId: item.searchId, // placeId 추가
+          }));
           setRecentSearches(searchTerms);
-          console.log('Updated recentSearches:', searchTerms); // 상태 업데이트 확인
         } else {
           setRecentSearches([]);
         }
@@ -187,9 +190,11 @@ export default function SearchScreen({navigation}) {
           </View>
           <FlatList
             data={data} // 이때 data는 name들로 이루어진 배열
-            keyExtractor={item =>
-              item.mapId ? item.mapId.toString() : item.id.toString()
-            }
+            keyExtractor={(item, index) => {
+              return item.searchId
+                ? item.searchId.toString()
+                : index.toString();
+            }}
             renderItem={({item}) => (
               <View style={styles.recentItemContainer}>
                 <FontAwesome5 name="map-marker-alt" style={styles.recentIcon} />
@@ -213,12 +218,13 @@ export default function SearchScreen({navigation}) {
           </View>
           <FlatList
             data={recentSearches}
-            keyExtractor={(item, index) => index.toString()}
+            keyExtractor={(item, index) => item.searchId.toString()}
             renderItem={({item}) => (
               <View style={styles.recentItemContainer}>
                 <FontAwesome5 name="map-marker-alt" style={styles.recentIcon} />
-                <Text style={styles.recentItem}>{item}</Text>
-                <TouchableOpacity onPress={() => deleteRecentResearch(item)}>
+                <Text style={styles.recentItem}>{item.searchTerm}</Text>
+                <TouchableOpacity
+                  onPress={() => deleteRecentResearch(item.searchId)}>
                   <Icon name="close" style={styles.deleteIcon} />
                 </TouchableOpacity>
               </View>
